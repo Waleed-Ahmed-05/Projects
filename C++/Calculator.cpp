@@ -6,9 +6,10 @@
 using namespace std;
 
 string input;
-int Count = 0;
-float Number01 = 0;
-float Number02 = 0;
+int Count_01 = 0;
+int Count_02 = 0;
+float Number_01 = 0;
+float Number_02 = 0;
 float Result = 0;
 
 void Addition()
@@ -16,12 +17,12 @@ void Addition()
 	system("cls");
 	Result = 0;
 	cout << "How many numbers do you wanna add: ";
-	cin >> Count;
-	for(int i = 1;i <= Count;i++)
+	cin >> Count_01;
+	for(int i = 1;i <= Count_01;i++)
 	{
 		cout << "Enter number " << i << ": ";
-		cin >> Number01;
-		Result = Result + Number01;
+		cin >> Number_01;
+		Result = Result + Number_01;
 	}
 	cout << endl << "Addition of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
 	cin.sync();
@@ -31,40 +32,52 @@ void Subtraction()
 {
 	system("cls");
 	Result = 0;
-	Number01 = Result;
+	Count_02 = 0;
+	Number_01 = Result;
 	cout << "How many numbers do you wanna subtract: ";
-	cin >> Count;
-	while(Count > 0)
+	cin >> Count_01;
+	if(Count_01 == 1)
 	{
-		cout << "Current Result: " << Result << "  || ";
-		if(Number01 == 0)
-		{
-			Count--;
-			cout << " Enter number : ";
-			cin >> Number01;
-			continue;
-		}
-		cout << " Enter number : ";
-		cin >> Number02;
-		Result = Number01 - Number02;
-		Number01 = Result;
-		Count--;
+		system("cls");
+		cout << "! ! ! Please enter more then one value for subtraction ! ! !";
+		sleep(3);
 	}
-	cout << endl << "Subtraction of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
-	cin.sync();
-	getline(cin, input);
+	else
+	{
+		while(Count_01 > 0)
+		{
+			cout << "Current Result: " << Result << "  || ";
+			if(Number_01 == 0 && Count_02 == 0)
+			{
+				Count_01--;
+				Count_02++;
+				cout << " Enter number " << Count_02 << ":";
+				cin >> Number_01;
+				continue;
+			}
+			Count_02++;
+			cout << " Enter number " << Count_02 << ":";
+			cin >> Number_02;
+			Result = Number_01 - Number_02;
+			Number_01 = Result;
+			Count_01--;
+		}
+		cout << endl << "Subtraction of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
+		cin.sync();
+		getline(cin, input);
+	}
 }
 void Multliplication()
 {
 	system("cls");
 	Result = 1;
 	cout << "How many numbers do you wanna multiply: ";
-	cin >> Count;
-	for(int i = 1;i <= Count;i++)
+	cin >> Count_01;
+	for(int i = 1;i <= Count_01;i++)
 	{
 		cout << "Enter number " << i << ": ";
-		cin >> Number01;
-		Result = Number01 * Result;
+		cin >> Number_01;
+		Result = Number_01 * Result;
 	}
 	cout << endl << "Multiplication of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
 	cin.sync();
@@ -74,36 +87,48 @@ void Division()
 {
 	system("cls");
 	Result = 0;
-	Number01 = Result;
+	Count_02 = 0;
+	Number_01 = Result;
 	cout << "How many numbers do you wanna divide: ";
-	cin >> Count;
-	while(Count > 0)
+	cin >> Count_01;
+	if(Count_01 == 1)
 	{
-		cout << "Current Result: " << Result << "  || ";
-		if(Number01 == 0)
-		{
-			Count--;
-			cout << " Enter number : ";
-			cin >> Number01;
-			continue;
-		}
-		cout << " Enter number : ";
-		cin >> Number02;
-		Result = Number01 / Number02;
-		Number01 = Result;
-		Count--;
+		system("cls");
+		cout << "! ! ! Please enter more then one value for division ! ! !";
+		sleep(3);
 	}
-	cout << endl << "Division of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
-	cin.sync();
-	getline(cin, input);
+	else
+	{
+		while(Count_01 > 0)
+		{
+			cout << "Current Result: " << Result << "  || ";
+			if(Number_01 == 0 && Count_02 == 0)
+			{
+				Count_01--;
+				Count_02++;
+				cout << " Enter number " << Count_02 << ": ";
+				cin >> Number_01;
+				continue;
+			}
+			Count_02++;
+			cout << " Enter number " << Count_02 << ":";
+			cin >> Number_02;
+			Result = Number_01 / Number_02;
+			Number_01 = Result;
+			Count_01--;
+		}
+		cout << endl << "Division of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
+		cin.sync();
+		getline(cin, input);
+	}
 }
 void Factorial()
 {
 	system("cls");
 	Result = 1;
 	cout << "Enter a number to find it's factorial: ";
-	cin >> Count;
-	for(int i = 1;i <= Count;i++)
+	cin >> Count_01;
+	for(int i = 1;i <= Count_01;i++)
 	{
 		Result = i * Result;
 	}
@@ -114,15 +139,15 @@ void Factorial()
 
 int main()
 {
-	Count = 0;
+	Count_01 = 0;
 	string Operation;
 
 	system("cls");
 	cout << "Calculator has been Initialized";
-	while(Count < 5)
+	while(Count_01 < 5)
 	{
 		sleep(1);
-		Count++;
+		Count_01++;
 		cout << " . ";
 	}
 	cout << endl;
@@ -161,13 +186,13 @@ int main()
 			cout << "Invalid Operation" << endl;
 		}
 	}
-	Count = 0;
+	Count_01 = 0;
 	system("cls");
 	cout << "Shutting Down! Please Wait ";
-	while(Count < 5)
+	while(Count_01 < 5)
 	{
 		sleep(1);
-		Count++;
+		Count_01++;
 		cout << " . ";
 	}
 	system("cls");
