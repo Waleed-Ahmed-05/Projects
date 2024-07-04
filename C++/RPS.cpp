@@ -21,12 +21,10 @@ string RPS(int Number, string C_RPS)
     else if(Number == 3){C_RPS = "S";}
     return C_RPS;
 }
-int Sleep(int Status)
+void Sleep(int Status)
 {
-    if(Status == 0)
-    {for(int i = 0;i < 1000000000;i++){}}
-    else if(Status == 1)
-    {for(int i = 0;i < 40000000;i++){}}
+    if(Status == 0){for(int i = 0;i < 1000000000;i++){}}
+    else if(Status == 1){for(int i = 0;i < 40000000;i++){}}
 }
 void Animation(int Status)
 {
@@ -58,7 +56,26 @@ void Animation(int Status)
         {
             Sleep(1);
             cout << Statement[i];
-            if(i == sizeof(Statement) - 1){Statement = "";}
+        }
+    }
+    else if(Status == 3)
+    {
+        Statement = "! ! ! It's a draw ! ! !";
+        
+        for(int i = 0;i < sizeof(Statement);i++)
+        {
+            Sleep(1);
+            cout << Statement[i];
+        }
+    }
+    else if(Status == 4)
+    {
+        Statement = "Please wait! Choices are being shuffled . . . . . . . . . . . . . . . . .";
+        
+        for(int i = 0;i < sizeof(Statement) + 50;i++)
+        {
+            Sleep(1);
+            cout << Statement[i];
         }
     }
 }
@@ -66,6 +83,7 @@ void Animation(int Status)
 int main()
 {
     system("cls");
+
     string Choice;
     string C_RPS;
     int Rounds;
@@ -78,7 +96,6 @@ int main()
         int Loses = 0;
         int Round_Count = 0;
         int Random_Number = Random(Random_Number);
-
         C_RPS = RPS(Random_Number, C_RPS);
 
         cout << "Please specify how many matches do you wanna play: ";
@@ -88,9 +105,12 @@ int main()
 
         while(Rounds > 0)
         {
-            
             Rounds--;
             Round_Count++;
+
+            Animation(4);
+
+            system("cls");
 
             cout << "Round No. " << Round_Count << endl << endl << "  Wins: " << Wins << "  ||  Loses: " << Loses << endl << endl;
             cout << "Enter R for Rock,P for Paper and S for Scissor: ";
@@ -108,27 +128,38 @@ int main()
                 cout << "! ! ! Invalid choice ! ! !";
 
                 Sleep(0);
-                system("cls");
 
+                system("cls");
             }
         }
+
         if(Wins > Loses){Animation(1);}
         else if(Wins < Loses){Animation(0);}
+        else if(Wins == Loses){Animation(3);}
 
         cout << endl << endl;
 
         while(Choice != "Y" || Choice != "y" || Choice != "N" || Choice != "n")
         {
-            Animation(2);cout << " (Y/N): ";
-
+            Animation(2);
+            
+            cout << " (Y/N): ";
             cin >> Choice;
 
             system("cls");
 
             if(Choice == "Y" || Choice == "y"){main();break;}
             else if(Choice == "N" || Choice == "n"){break;}
-            else{cout << "! ! ! Invalid Choice ! ! !";Sleep(0);system("cls");}
+            else
+            {
+                cout << "! ! ! Invalid Choice ! ! !";
+
+                Sleep(0);
+                
+                system("cls");
+            }
         }
+        
         break;
     }
 }
