@@ -106,7 +106,7 @@ void Division()
 			{
 				Count_01--;
 				Count_02++;
-				cout << " Enter number " << Count_02 << ": ";
+				cout << " Enter number " << Count_02 << ":";
 				cin >> Number_01;
 				continue;
 			}

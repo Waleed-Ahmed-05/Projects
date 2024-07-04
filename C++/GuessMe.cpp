@@ -53,17 +53,13 @@ void Guess(int Random_Number,int Number)
 int main()
 {
     system("cls");
-
-    int Random_Number;
     int Number;
-    Random_Number = Random(Random_Number);
+    int Random_Number = Random(Random_Number);
     Guess_01 = 0;
     Guess_02 = 0;
     Tries = 0;
-
     cout << "Enter any number to begin guessing: ";
     cin >> Number;
-
     while(true)
     {
         Tries++;
@@ -72,10 +68,8 @@ int main()
         if(Random_Number == Number)
         {
             Animation(0);
-
             cout << endl << "Do you wanna play again?(Y/N): ";
             cin >> Statement;
-
             if(Statement == "Y" || Statement == "y")
             {
                 main();
@@ -83,6 +77,7 @@ int main()
             }
             else if(Statement == "N" || Statement == "n")
             {
+                system("cls");
                 break;
             }
             else
