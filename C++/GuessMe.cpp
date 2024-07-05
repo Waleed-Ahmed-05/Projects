@@ -59,7 +59,7 @@ int Data_Validator(int Number, string Statement)
             system("cls");
         }
     }
-    
+
     return Number;
 }
 
@@ -75,7 +75,7 @@ int main()
 
     system("cls");
 
-    Number = Data_Validator(Number, "Enter any number to begin guessing:");
+    Number = Data_Validator(Number, "Enter any number to begin guessing: ");
 
     while(true)
     {
