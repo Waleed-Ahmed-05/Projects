@@ -125,7 +125,7 @@ int main()
 
             system("cls");
 
-            cout << C_RPS << "Round No. " << Round_Count << endl << endl << "Wins: " << Wins << "  ||  Loses: " << Loses  << "  ||  Draws: " << Draws << endl << endl;
+            cout << "Round No. " << Round_Count << endl << endl << "Wins: " << Wins << "  ||  Loses: " << Loses  << "  ||  Draws: " << Draws << endl << endl;
             cout << "Enter R for Rock,P for Paper and S for Scissor: ";
             cin >> Choice;
 
