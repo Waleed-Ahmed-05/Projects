@@ -2,30 +2,80 @@
 #include <string>
 #include <stdlib.h>
 #include <unistd.h>
+#include <cctype>
+#include <sstream>
 
 using namespace std;
 
 string Statement;
-string input;
+string input, Input;
 int Count_01 = 0;
 int Count_02 = 0;
 float Number_01 = 0;
 float Number_02 = 0;
 float Result = 0;
 
+void Sleep(int Status)
+{
+    if(Status == 0){for(int i = 0;i < 100000000;i++){}}
+    else if(Status == 1){for(int i = 0;i < 40000000;i++){}}
+    if(Status == 2){for(int i = 0;i < 1000000000;i++){}}
+}
+int Data_Validator(int Number, string Statement)
+{
+    while(true)
+    {
+        string Input;
+        
+		cout << Statement;
+        cin >> Input;
+
+        istringstream Is_String(Input);
+
+        if(Is_String >> Number && Is_String.eof()){break;}
+        else
+        {
+            system("cls");
+            
+            cout << "! ! ! Invalid input ! ! !";
+            
+            Sleep(2);
+
+            system("cls");
+        }
+    }
+    
+    return Number;
+}
 void Addition()
 {
 	system("cls");
 
 	Result = 0;
 
-	cout << "How many numbers do you wanna add: ";
-	cin >> Count_01;
+	Count_01 = Data_Validator(Count_01, "How many numbers do you wanna add: ");
 
 	for(int i = 1;i <= Count_01;i++)
 	{
-		cout << "Enter number " << i << ": ";
-		cin >> Number_01;
+		while(true)
+		{
+			cout << "Current Result: " << Result << "  ||  Enter number " << i << ": ";
+			cin >> Input;
+
+			istringstream Is_String(Input);
+
+			if(Is_String >> Number_01 && Is_String.eof()){break;}
+			else
+			{
+				system("cls");
+				
+				cout << "! ! ! Invalid input ! ! !";
+				
+				Sleep(2);
+
+				system("cls");
+			}
+		}
 
 		Result = Result + Number_01;
 	}
@@ -43,8 +93,7 @@ void Subtraction()
 	Count_02 = 0;
 	Number_01 = Result;
 
-	cout << "How many numbers do you wanna subtract: ";
-	cin >> Count_01;
+	Count_01 = Data_Validator(Count_01, "How many numbers do you wanna subtract: ");
 
 	if(Count_01 == 1)
 	{
@@ -58,22 +107,54 @@ void Subtraction()
 	{
 		while(Count_01 > 0)
 		{
-			cout << "Current Result: " << Result << "  || ";
-
 			if(Number_01 == 0 && Count_02 == 0)
 			{
 				Count_01--;
 				Count_02++;
 
-				cout << " Enter number " << Count_02 << ":";
-				cin >> Number_01;
+				while(true)
+				{
+					cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ":";
+					cin >> Input;
+
+					istringstream Is_String(Input);
+
+					if(Is_String >> Number_01 && Is_String.eof()){break;}
+					else
+					{
+						system("cls");
+						
+						cout << "! ! ! Invalid input ! ! !";
+						
+						Sleep(2);
+
+						system("cls");
+					}
+				}
 
 				continue;
 			}
 			Count_02++;
 
-			cout << " Enter number " << Count_02 << ":";
-			cin >> Number_02;
+			while(true)
+			{
+				cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ":";
+			    cin >> Input;
+
+				istringstream Is_String(Input);
+
+				if(Is_String >> Number_02 && Is_String.eof()){break;}
+				else
+				{
+					system("cls");
+					
+					cout << "! ! ! Invalid input ! ! !";
+					
+					Sleep(2);
+
+					system("cls");
+				}
+			}
 
 			Result = Number_01 - Number_02;
 			Number_01 = Result;
@@ -93,13 +174,29 @@ void Multliplication()
 
 	Result = 1;
 
-	cout << "How many numbers do you wanna multiply: ";
-	cin >> Count_01;
+	Count_01 = Data_Validator(Count_01, "How many numbers do you wanna multiply: ");
 
 	for(int i = 1;i <= Count_01;i++)
 	{
-		cout << "Enter number " << i << ": ";
-		cin >> Number_01;
+		while(true)
+		{
+			cout << "Current Result: " << Result << "  ||  Enter number " << i << ": ";
+			cin >> Input;
+			
+			istringstream Is_String(Input);
+
+			if(Is_String >> Number_01 && Is_String.eof()){break;}
+			else
+			{
+				system("cls");
+				
+				cout << "! ! ! Invalid input ! ! !";
+				
+				Sleep(2);
+
+				system("cls");
+			}
+		}
 
 		Result = Number_01 * Result;
 	}
@@ -117,8 +214,7 @@ void Division()
 	Count_02 = 0;
 	Number_01 = Result;
 
-	cout << "How many numbers do you wanna divide: ";
-	cin >> Count_01;
+	Count_01 = Data_Validator(Count_01, "How many numbers do you wanna divide: ");
 
 	if(Count_01 == 1)
 	{
@@ -131,23 +227,55 @@ void Division()
 	else
 	{
 		while(Count_01 > 0)
-		{
-			cout << "Current Result: " << Result << "  || ";
-			
+		{	
 			if(Number_01 == 0 && Count_02 == 0)
 			{
 				Count_01--;
 				Count_02++;
 				
-				cout << " Enter number " << Count_02 << ":";
-				cin >> Number_01;
+				while(true)
+				{
+					cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ":";
+					cin >> Input;
+
+					istringstream Is_String(Input);
+
+					if(Is_String >> Number_01 && Is_String.eof()){break;}
+					else
+					{
+						system("cls");
+						
+						cout << "! ! ! Invalid input ! ! !";
+						
+						Sleep(2);
+
+						system("cls");
+					}
+				}
 				
 				continue;
 			}
 			Count_02++;
 			
-			cout << " Enter number " << Count_02 << ":";
-			cin >> Number_02;
+			while(true)
+			{
+				cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ":";
+			    cin >> Input;
+
+				istringstream Is_String(Input);
+
+				if(Is_String >> Number_02 && Is_String.eof()){break;}
+				else
+				{
+					system("cls");
+					
+					cout << "! ! ! Invalid input ! ! !";
+					
+					Sleep(2);
+
+					system("cls");
+				}
+			}
 			
 			Result = Number_01 / Number_02;
 			Number_01 = Result;
@@ -167,8 +295,25 @@ void Factorial()
 
 	Result = 1;
 
-	cout << "Enter a number to find it's factorial: ";
-	cin >> Count_01;
+	while(true)
+	{
+		cout << "Enter a number to find it's factorial: ";
+		cin >> Input;
+	
+		istringstream Is_String(Input);
+
+		if(Is_String >> Count_01 && Is_String.eof()){break;}
+		else
+		{
+			system("cls");
+			
+			cout << "! ! ! Invalid input ! ! !";
+			
+			Sleep(2);
+
+			system("cls");
+		}
+	}
 
 	for(int i = 1;i <= Count_01;i++){Result = i * Result;}
 
@@ -176,12 +321,6 @@ void Factorial()
 	
 	cin.sync();
 	getline(cin, input);
-}
-void Sleep(int Status)
-{
-    if(Status == 0){for(int i = 0;i < 100000000;i++){}}
-    else if(Status == 1){for(int i = 0;i < 40000000;i++){}}
-    if(Status == 2){for(int i = 0;i < 1000000000;i++){}}
 }
 void Animation(int Status)
 {

@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <cctype>
+#include <sstream>
 
 using namespace std;
 
@@ -27,6 +29,32 @@ void Sleep(int Status)
     if(Status == 0){for(int i = 0;i < 1000000000;i++){}}
     else if(Status == 1){for(int i = 0;i < 40000000;i++){}}
     else if(Status == 2){for(int i = 0;i < 80000000;i++){}}
+}
+int Data_Validator(int Number, string Statement)
+{
+    while(true)
+    {
+        string Input;
+        
+		cout << Statement;
+        cin >> Input;
+
+        istringstream Is_String(Input);
+
+        if(Is_String >> Number && Is_String.eof()){break;}
+        else
+        {
+            system("cls");
+            
+            cout << "! ! ! Invalid input ! ! !";
+            
+            Sleep(0);
+
+            system("cls");
+        }
+    }
+    
+    return Number;
 }
 void Animation(int Status)
 {
@@ -100,8 +128,7 @@ int main()
         int Round_Count = 0;
         int Random_Number = 0;
 
-        cout << "Please specify how many matches do you wanna play: ";
-        cin >> Rounds;
+        Rounds = Data_Validator(Rounds, "PLease specify how many matches do you wanna play: ");
 
         system("cls");
 
