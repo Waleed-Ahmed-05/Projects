@@ -22,8 +22,8 @@ void History(int Status,string Data)
 	
 	History.open("History.txt",ios::app);
 
-	if(Status == -1){History << endl << Data;}
-	else if(Status == 0){History << " = " << Data;}
+	if(Status == -1){History << Data;}
+	else if(Status == 0){History << " = " << Data << endl;}
 	else if(Status == 1){History << " + " << Data;}
 	else if(Status == 2){History << " - " << Data;}
 	else if(Status == 3){History << " * " << Data;}
@@ -32,6 +32,7 @@ void History(int Status,string Data)
 	if(Status == 5)
 	{
 		Count_01 = 0;
+		Count_02 = 0;
 
 		History.close();
 
@@ -43,7 +44,18 @@ void History(int Status,string Data)
 		{
 			Count_01++;
 			getline(History, Statement);
-			cout << Count_01 << ". " << Statement << endl << endl;
+		}
+
+		History.close();
+
+		History.open("History.txt",ios::in);
+
+		while(!History.eof())
+		{
+			Count_02++;
+			getline(History, Statement);
+			cout << Count_02 << ". " << Statement << endl << endl;
+			if(Count_01 - 1 == Count_02){break;}
 		}
 	}
 
@@ -158,7 +170,7 @@ void Subtraction()
 
 					istringstream Is_String(Input);
 
-					if(Is_String >> Number_01 && Is_String.eof()){break;}
+					if(Is_String >> Number_01 && Is_String.eof()){History(-1, Input);break;}
 					else
 					{
 						system("cls");
@@ -173,8 +185,6 @@ void Subtraction()
 
 				continue;
 			}
-
-			History(-1, Input);
 
 			Count_02++;
 
@@ -444,7 +454,7 @@ int main()
 		else if(Operation == "5"){Factorial();}
 		else if(Operation == "6")
 		{
-			History(5, " ");
+			History(5, "");
 
 			cout << "Press enter key to continue: ";
 
