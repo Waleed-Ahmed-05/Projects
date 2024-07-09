@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <cctype>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -15,6 +16,39 @@ float Number_01 = 0;
 float Number_02 = 0;
 float Result = 0;
 
+void History(int Status,string Data)
+{
+	fstream History;
+	
+	History.open("History.txt",ios::app);
+
+	if(Status == -1){History << endl << Data;}
+	else if(Status == 0){History << " = " << Data;}
+	else if(Status == 1){History << " + " << Data;}
+	else if(Status == 2){History << " - " << Data;}
+	else if(Status == 3){History << " * " << Data;}
+	else if(Status == 4){History << " / " << Data;}
+
+	if(Status == 5)
+	{
+		Count_01 = 0;
+
+		History.close();
+
+		History.open("History.txt",ios::in);
+
+		system("cls");
+		
+		while(!History.eof())
+		{
+			Count_01++;
+			getline(History, Statement);
+			cout << Count_01 << ". " << Statement << endl << endl;
+		}
+	}
+
+	History.close();
+}
 void Sleep(int Status)
 {
     if(Status == 0){for(int i = 0;i < 100000000;i++){}}
@@ -77,8 +111,13 @@ void Addition()
 			}
 		}
 
+		if(i == 1){History(-1, Input);}
+		else{History(1, Input);}
+
 		Result = Result + Number_01;
 	}
+
+	History(0, to_string(Result));
 
 	cout << endl << "Addition of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
 
@@ -114,7 +153,7 @@ void Subtraction()
 
 				while(true)
 				{
-					cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ":";
+					cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ": ";
 					cin >> Input;
 
 					istringstream Is_String(Input);
@@ -134,11 +173,14 @@ void Subtraction()
 
 				continue;
 			}
+
+			History(-1, Input);
+
 			Count_02++;
 
 			while(true)
 			{
-				cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ":";
+				cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ": ";
 			    cin >> Input;
 
 				istringstream Is_String(Input);
@@ -156,11 +198,15 @@ void Subtraction()
 				}
 			}
 
+			History(2, Input);
+
 			Result = Number_01 - Number_02;
 			Number_01 = Result;
 
 			Count_01--;
 		}
+
+		History(0, to_string(Result));
 
 		cout << endl << "Subtraction of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
 
@@ -198,8 +244,13 @@ void Multliplication()
 			}
 		}
 
+		if(i == 1){History(-1, Input);}
+		else{History(3, Input);}
+
 		Result = Number_01 * Result;
 	}
+
+	History(0, to_string(Result));
 
 	cout << endl << "Multiplication of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
 	
@@ -224,7 +275,7 @@ void Division()
 		
 		sleep(3);
 	}
-	else
+		else
 	{
 		while(Count_01 > 0)
 		{	
@@ -235,7 +286,7 @@ void Division()
 				
 				while(true)
 				{
-					cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ":";
+					cout << "Current Result: " << Result << "  || " << " Enter number " << Count_02 << ": ";
 					cin >> Input;
 
 					istringstream Is_String(Input);
@@ -252,6 +303,8 @@ void Division()
 						system("cls");
 					}
 				}
+
+				History(-1, Input);
 				
 				continue;
 			}
@@ -276,10 +329,14 @@ void Division()
 					system("cls");
 				}
 			}
-			
+
 			Result = Number_01 / Number_02;
+
+			if(Count_02 == 2){History(4, Input);History(0, to_string(Result));}
+			else{History(-1, to_string(Number_01));History(4, Input);History(0, to_string(Result));}
+
 			Number_01 = Result;
-			
+
 			Count_01--;
 		}
 		
@@ -316,6 +373,10 @@ void Factorial()
 	}
 
 	for(int i = 1;i <= Count_01;i++){Result = i * Result;}
+
+	History(-1, to_string(Count_01) + "!");
+
+	History(0, to_string(Result));
 
 	cout << endl << "Factorial of given numbers is " << Result << "." << endl << endl << "Press enter key to continue: ";
 	
@@ -373,30 +434,24 @@ int main()
 	{
 		system("cls");
 
-		cout << "Which operation do you wanna perform?" << endl << "1. Addition" << endl << "2. Subtraction" << endl << "3. Multliplication" << endl << "4. Division" << endl << "5. Factorial" << endl << "6. Exit" << endl << "Enter your desired operation (i.e : 1 , 2 e.t.c): ";
+		cout << "Which operation do you wanna perform?" << endl << "1. Addition" << endl << "2. Subtraction" << endl << "3. Multliplication" << endl << "4. Division" << endl << "5. Factorial" << endl << "6. History" << endl << "7. Exit" << endl << "Enter your desired operation (i.e : 1 , 2 e.t.c): ";
 		cin >> Operation;
 
-		if(Operation == "1")
-		{
-			Addition();
-		}
-		else if(Operation == "2")
-		{
-			Subtraction();
-		}
-		else if(Operation == "3")
-		{
-			Multliplication();
-		}
-		else if(Operation == "4")
-		{
-			Division();
-		}
-		else if(Operation == "5")
-		{
-			Factorial();
-		}
+		if(Operation == "1"){Addition();}
+		else if(Operation == "2"){Subtraction();}
+		else if(Operation == "3"){Multliplication();}
+		else if(Operation == "4"){Division();}
+		else if(Operation == "5"){Factorial();}
 		else if(Operation == "6")
+		{
+			History(5, " ");
+
+			cout << "Press enter key to continue: ";
+
+			cin.sync();
+			getline(cin, input);
+		}
+		else if(Operation == "7")
 		{
 			break;
 		}
