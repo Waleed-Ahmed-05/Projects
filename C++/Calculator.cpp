@@ -65,7 +65,7 @@ void Sleep(int Status)
 {
     if(Status == 0){for(int i = 0;i < 100000000;i++){}}
     else if(Status == 1){for(int i = 0;i < 40000000;i++){}}
-    if(Status == 2){for(int i = 0;i < 1000000000;i++){}}
+    else if(Status == 2){for(int i = 0;i < 1000000000;i++){}}
 }
 int Data_Validator(int Number, string Statement)
 {
@@ -224,7 +224,7 @@ void Subtraction()
 		getline(cin, input);
 	}
 }
-void Multliplication()
+void Multiplication()
 {
 	system("cls");
 
