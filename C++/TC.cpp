@@ -22,9 +22,9 @@ void Animation(int Status)
 {
     if(Status == 0)
     {
-        Statement = "TC.cpp is being initialized . . . . . . . . . . . . . . .";
+        Statement = "Temperature converter is being initialized . . . . . . . . . . . . . . .";
 
-        for(int i = 0;i < sizeof(Statement) + 33;i++)
+        for(int i = 0;i < sizeof(Statement) + 50;i++)
         {
             Sleep(1);
             cout << Statement[i];
@@ -32,9 +32,9 @@ void Animation(int Status)
     }
     else if(Status == 1)
     {
-        Statement = "TC.cpp is being terminated . . . . . . . . . . . . . . .";
+        Statement = "Temperature converter is being terminated . . . . . . . . . . . . . . .";
 
-        for(int i = 0;i < sizeof(Statement) + 33;i++)
+        for(int i = 0;i < sizeof(Statement) + 49;i++)
         {
             Sleep(1);
             cout << Statement[i];

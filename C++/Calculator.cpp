@@ -449,7 +449,7 @@ int main()
 
 		if(Operation == "1"){Addition();}
 		else if(Operation == "2"){Subtraction();}
-		else if(Operation == "3"){Multliplication();}
+		else if(Operation == "3"){Multiplication();}
 		else if(Operation == "4"){Division();}
 		else if(Operation == "5"){Factorial();}
 		else if(Operation == "6")
