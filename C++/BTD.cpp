@@ -50,6 +50,34 @@ int Multiplier(int Count_01)
 
     return Number;
 }
+string Reverse(string Statement)
+{
+    int Count_01 = Statement.size();string Array = Statement;
+
+    for(int i = 0;i < Statement.size();i++){Count_01--;Array[Count_01] = Statement[i];}
+
+    Statement = Array;
+
+    return Statement;
+}
+string Divisor(int Number)
+{        
+    int Number_01, Number_02;
+    Statement = "";
+
+    while(Number > 0)
+    {
+        Number_01 = Number / 2;
+        Number_02 = Number % 2;
+        Number = Number_01;
+
+        Statement += to_string(Number_02);
+    }
+
+    Statement = Reverse(Statement);
+
+    return Statement;
+}
 bool Binary_Validator(int Number)
 {
     bool Valid = 1;
@@ -104,7 +132,22 @@ void BinToDec()
         else{system("cls");cout << "! ! ! Invalid binary number! ! !"; Sleep(1);}
     }
 }
-void DecToBin(){}
+void DecToBin()
+{
+    system("cls");
+
+    int BTD = Data_Validator(BTD ,"Enter any decimal number: ");
+
+    Statement = Divisor(BTD);
+
+    system("cls");
+
+    cout << "Decimal number " << BTD << " in binary is " << Statement << "." << endl << endl << "Press enter key to continue: ";
+
+    cin.sync();
+    getline(cin, Input);
+    
+}
 void History(){}
 
 int main()
