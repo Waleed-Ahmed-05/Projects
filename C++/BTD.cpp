@@ -38,21 +38,21 @@ int Data_Validator(int Number, string Statement)
     
     return Number;
 }
-int Counter(int Number)
+int Multiplier(int Count_01)
 {
-    int Counter = 0;
+    int Number = 1;
 
-    while(Number > 0)
+    while(Count_01 > 0)
     {
-        Number = Number / 10;
-        Counter++;
+        Number = Number * 2;
+        Count_01--;
     }
 
-    return Counter;
+    return Number;
 }
 bool Binary_Validator(int Number)
 {
-    bool Valid;
+    bool Valid = 1;
 
     while(Number > 0)
     {
@@ -68,57 +68,44 @@ bool Binary_Validator(int Number)
 }
 void BinToDec()
 {
-    int Count_01,Count_02,Number_01,Number_02 = 1,Number_03;
+    int Number_01,Number_02,Count_01;
 
     while(true)
     {
         system("cls");
 
         int BTD = Data_Validator(BTD, "Enter any binary number: ");
-        Number_03 = BTD;
+        Result = 0,Count_01 = -1,Number_02 = BTD;
 
         if(Binary_Validator(BTD))
         {
-            Count_01 = Counter(BTD);
-
-            Result = 0;
-            
-            while(Count_01 > 0)
+            while(BTD > 0)
             {
-                Count_01--;
-                Count_02++;
+                Count_01++;
 
                 Number_01 = BTD % 10;
-                Number_02 = Number_01;
-
-                if(Count_02 != 1)
-                {
-                    for(int i = 0;i < Count_02;i++)
-                    {
-                        Number_02 = Number_02 * 2;
-                    }
-                }
+                
+                if(Count_01 > 0){Result += Number_01 * Multiplier(Count_01);}
+                else{Result = Number_01;}
 
                 BTD = BTD / 10;
-                Result = Result + Number_02;
+
             }
+
+            system("cls");
             
-            cout << "Binary conversion of " << Number_03 << " into decimal is " << Result << "." << endl << endl << "Press enter key to continue: ";
+            cout << "Binary number " << Number_02 << " in decimal is " << Result << "." << endl << endl << "Press enter key to continue: ";
 
             cin.sync();
             getline(cin, Input);
+
+            break;
         }
-        else{system("cls");cout << "! ! ! Invalid binary number ! ! !";Sleep(1);}
+        else{system("cls");cout << "! ! ! Invalid binary number! ! !"; Sleep(1);}
     }
 }
-void DecToBin()
-{
-
-}
-void History()
-{
-
-}
+void DecToBin(){}
+void History(){}
 
 int main()
 {
