@@ -19,7 +19,7 @@ void Create()
     History.open("History.txt", ios::app);
 
     cout << "Name: ";
-    cin >> Statement;
+    getline(cin, Statement);
 
     History << Statement << ",";
 
