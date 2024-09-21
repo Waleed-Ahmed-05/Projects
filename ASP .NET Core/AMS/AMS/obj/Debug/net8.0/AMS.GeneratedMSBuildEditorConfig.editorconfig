@@ -1,0 +1,243 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AMS
+build_property.RootNamespace = AMS
+build_property.ProjectDir = C:\Users\Gangster's Paradise\Desktop\AMS\AMS\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Gangster's Paradise\Desktop\AMS\AMS
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Car/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0NhclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Car/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0NhclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Car/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0NhclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Car/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0NhclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Car/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0NhclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/IndexNFA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxJbmRleE5GQS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Submission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxTdWJtaXNzaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Add_Flight/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkX0ZsaWdodFxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Car/Cars.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19DYXJcQ2Fycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Car/CreateNFA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19DYXJcQ3JlYXRlTkZBLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Car/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19DYXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Car/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19DYXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Car/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19DYXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Car/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19DYXJcUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Bookings_01.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcQm9va2luZ3NfMDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Bookings_02.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcQm9va2luZ3NfMDIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Bookings_03.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcQm9va2luZ3NfMDMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Bookings_04.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcQm9va2luZ3NfMDQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/CreateNFA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcQ3JlYXRlTkZBLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Flights.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcRmxpZ2h0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/LuggageAndEquipment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcTHVnZ2FnZUFuZEVxdWlwbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/ManageBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcTWFuYWdlQm9va2luZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/ManageUpgrades.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcTWFuYWdlVXBncmFkZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Book_Flight/SpecialNeeds.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va19GbGlnaHRcU3BlY2lhbE5lZWRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Contact_us/CreateNFA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdF91c1xDcmVhdGVORkEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Contact_us/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdF91c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Contact_us/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdF91c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Contact_us/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdF91c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Users/Add_Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQWRkX0FkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Users/Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Users/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Users/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcU2lnbnVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gangster's Paradise/Desktop/AMS/AMS/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-sn3oiia3e6

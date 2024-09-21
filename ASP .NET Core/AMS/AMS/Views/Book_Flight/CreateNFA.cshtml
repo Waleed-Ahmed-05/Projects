@@ -1,0 +1,78 @@
+﻿@model AMS.Models.Book_Flight
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout";
+}
+<style>
+     body {
+         margin: 0;
+         padding: 0;
+         height: 100vh;
+         overflow: hidden; /* Prevents scrolling */
+         position: relative;
+     }
+
+     .background-image {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover; /* Ensures the image covers the entire background */
+         z-index: -1; /* Places the image behind other content */
+     }
+
+     .content {
+         position: relative;
+         color: white;
+         text-align: center;
+         padding: 20px;
+    }
+
+    .shadow-text {
+        color: black;
+        text-shadow: 1px 1px 2px white, /* Bottom-right shadow */
+        -1px -1px 2px white, /* Top-left shadow */
+        -1px 1px 2px white, /* Bottom-left shadow */
+        1px -1px 2px white; /* Top-right shadow */
+    }
+</style>
+<img src="~/css/7.jpg" alt="Background Image" class="background-image">
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; min-height: 30vh; padding-top: 0;">
+    <h1 class="shadow-text">Add Passenger Details</h1>
+
+    <hr />
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <form asp-action="Payment" style="width: 100%; max-width: 600px;">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display: flex; justify-content: space-between;">
+                <input asp-for="Flight_ID" class="form-control" value="@ViewBag.Flight_ID" type="hidden" />
+                <input asp-for="User_ID" class="form-control" value="@ViewBag.Data.User_ID" type="hidden" />
+                <input asp-for="Ticket_Price" class="form-control" value="@ViewBag.Cost" type="hidden" />
+                <input asp-for="First_Name" class="form-control" style="width: 250px; margin-right: 10px;" placeholder="First Name" required />
+                <input asp-for="Last_Name" class="form-control" style="width: 250px;" placeholder="Last Name" required />
+            </div>
+            <br>
+            <div class="form-group" style="display: flex; justify-content: space-between;">
+                <input asp-for="Nationality" class="form-control" style="width: 250px; margin-right: 10px;" placeholder="Nationality" required />
+                <input asp-for="CNIC" class="form-control" style="width: 250px;" placeholder="CNIC" required />
+            </div>
+            <br>
+            <div class="form-group" style="display: flex; justify-content: space-between;">
+                <input asp-for="Adult_Seats" type="number" class="form-control" style="width: 250px; margin-right: 10px;" placeholder="Adult Seats" required />
+                <input asp-for="Child_Seats" type="number" class="form-control" style="width: 250px;" placeholder="Child Seats" required />
+            </div>
+            <br>
+            <div class="form-group" style="display: flex; justify-content: center;">
+                <input type="submit" value="Proceed to Payment" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,115 @@
+﻿@model AMS.Models.Add_Flight
+
+@{
+    ViewData["Title"] = "Flights";
+    Layout = "_Layout";
+}
+
+@if (ViewBag.Status == "One Way")
+{
+    <h1>Adding a new flight please wait</h1>
+    <hr />
+    <div hidden>
+        <div>
+            <form asp-action="Edit" asp-route-id="@ViewBag.Flight_ID">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Flight_ID" value="@ViewBag.Flight_ID" hidden/>
+                <div class="form-group" style="display: flex">
+                    <input asp-for="User_ID" class="form-control" value="@ViewBag.User_ID" hidden/>
+                    <input asp-for="Departing_From" class="form-control" value="@ViewBag.Departing_From" />
+                    <input asp-for="Arrival_At" class="form-control" value="@ViewBag.Arrival_At" />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex">
+                    <input asp-for="Departing_Time_01" class="form-control" value="@ViewBag.Departing_Time_01" />
+                    <input asp-for="Arrival_Time_01" class="form-control" value="@ViewBag.Arrival_Time_01" />
+                    <input asp-for="Departing_Time_02" class="form-control" value="NULL" />
+                    <input asp-for="Arrival_Time_02" class="form-control" value="NULL" />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex">
+                    <input asp-for="Departing_Date_01" class="form-control" value="@ViewBag.Departing_Date_01" />
+                    <input asp-for="Arrival_Date_01" class="form-control" value="@ViewBag.Arrival_Date_01" />
+                    <input asp-for="Departing_Date_02" class="form-control" value="NULL" />
+                    <input asp-for="Arrival_Date_02" class="form-control" value="NULL" />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex">
+                    <input asp-for="Ticket_Price" type="number" value="@ViewBag.Ticket_Price" />
+                    <input asp-for="Class" value="@ViewBag.Class" />
+                    <br>
+                    <div style="margin-bottom: 10px;">
+                        <input asp-for="Status" value="@ViewBag.Status" />
+                    </div>
+                    <div class="form-group" style="display: flex">
+                        <input type="submit" id="Auto" value="Create" class="btn btn-primary" style="margin-right: 15px;" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+        document.getElementById("Auto").click();
+        };
+    </script>
+}
+else if(ViewBag.Status == "Two Way")
+{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <h1><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Adding a new flight's 2 way details</h1>
+    <hr />
+    <div>
+        <div>
+            <form asp-action="Edit" asp-route-id="@ViewBag.Flight_ID">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Flight_ID" value="@ViewBag.Flight_ID" hidden/>
+                <div class="form-group" style="display: flex">
+                    <input asp-for="User_ID" class="form-control" value="@ViewBag.User_ID" hidden/>
+                    <label asp-for="Arrival_At" class="control-label" style="margin-top: 5px;margin-right: 10px;">Departure</label>
+                    <input asp-for="Arrival_At" value="@ViewBag.Arrival_At" class="form-control" style="width: 20%;margin-right: 50px" readonly />
+                    <span asp-validation-for="Arrival_At" class="text-danger"></span>
+                    <label asp-for="Departing_From" class="control-label" style="margin-top: 5px;">Arrival</label>
+                    <input asp-for="Departing_From" value="@ViewBag.Departing_From" style="width: 20%;margin-left: 11px" class="form-control" readonly />
+                    <span asp-validation-for="Departing_From" class="text-danger"></span>
+                </div>
+                <br>
+                <div class="form-group" style="display: flex">
+                    <input asp-for="Departing_Time_01" class="form-control" value="@ViewBag.Departing_Time_01" hidden/>
+                    <input asp-for="Arrival_Time_01" class="form-control" value="@ViewBag.Arrival_Time_01" hidden/>
+                    <label asp-for="Departing_Time_02" class="control-label" style="margin-top: 5px;">Time</label>
+                    <input asp-for="Departing_Time_02" type="time" class="form-control" style="width: 20%;margin-left: 46.5px;margin-right: 50px" required/>
+                    <label asp-for="Arrival_Time_02" class="control-label" style="margin-top: 5px;">Time</label>
+                    <input asp-for="Arrival_Time_02" type="time" class="form-control" style="width: 20%;margin-left: 22px" required/>
+                </div>
+                <br>
+                <div class="form-group" style="display: flex">
+                    <input asp-for="Departing_Date_01" class="form-control" value="@ViewBag.Departing_Date_01" hidden/>
+                    <input asp-for="Arrival_Date_01" class="form-control" value="@ViewBag.Arrival_Date_01" hidden/>
+                    <label asp-for="Departing_Date_02" class="control-label" style="margin-top: 5px;">Date</label>
+                    <input asp-for="Departing_Date_02" type="date" class="form-control" style="width: 20%;margin-left: 46.5px;margin-right: 50px" required/>
+                    <label asp-for="Arrival_Date_02" class="control-label" style="margin-top: 5px;">Date</label>
+                    <input asp-for="Arrival_Date_02" type="date" class="form-control" style="width: 20%;margin-left: 24px" required/>
+                </div>
+                <br>
+                <div class="form-group" style="display: flex" hidden>
+                    <input asp-for="Ticket_Price" type="number" value="@ViewBag.Ticket_Price"/>
+                    <input asp-for="Class" value="@ViewBag.Class"/>
+                    <input asp-for="Status" value="@ViewBag.Status" />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex">
+                    <input type="submit" value="Update" class="btn btn-primary" style="margin-right: 15px;" />
+                    <input type="reset" value="Clear" class="btn btn-primary" style="margin-right: 15px;" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

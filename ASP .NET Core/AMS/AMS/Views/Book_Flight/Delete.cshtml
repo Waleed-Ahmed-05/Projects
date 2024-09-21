@@ -1,0 +1,93 @@
+﻿@model AMS.Models.Book_Flight
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_Layout";
+}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevents scrolling */
+        position: relative;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the entire background */
+        z-index: -1; /* Places the image behind other content */
+    }
+
+    .content {
+        position: relative;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .shadow-text {
+        color: white;
+    }
+</style>
+<img src="~/css/9.jpg" alt="Background Image" class="background-image">
+<h1 class="shadow-text">Cancel current flight</h1>
+
+<h3 class="shadow-text">Are you sure you want to cancel your flight?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            First Name
+        </dt>
+        <dd class = "col-sm-10 shadow-text">
+            @Html.DisplayFor(model => model.First_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Last Name
+        </dt>
+        <dd class = "col-sm-10 shadow-text">
+            @Html.DisplayFor(model => model.Last_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+        <dd class="col-sm-10 shadow-text">
+            @Html.DisplayFor(model => model.Nationality)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CNIC)
+        </dt>
+        <dd class="col-sm-10 shadow-text">
+            @Html.DisplayFor(model => model.CNIC)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IBAN)
+        </dt>
+        <dd class="col-sm-10 shadow-text">
+            @Html.DisplayFor(model => model.IBAN)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CVV)
+        </dt>
+        <dd class="col-sm-10 shadow-text">
+            @Html.DisplayFor(model => model.CVV)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10 shadow-text">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Booking_ID" />
+        <input type="submit" value="Cancel Reservation" class="btn btn-danger" />
+        <a asp-action="Index" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-primary">Cancel</a>
+    </form>
+</div>

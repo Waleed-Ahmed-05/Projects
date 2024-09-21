@@ -1,0 +1,78 @@
+﻿@model AMS.Models.Book_Flight
+
+<h4>Book_Flight</h4>
+<hr />
+<div>
+    <div>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Booking_ID" />
+            <div class="form-group">
+                <label asp-for="Flight_ID" class="control-label"></label>
+                <input asp-for="Flight_ID" class="form-control" />
+                <span asp-validation-for="Flight_ID" class="text-danger"></span>
+                <label asp-for="Ticket_Price" class="control-label"></label>
+                <input asp-for="Ticket_Price" class="form-control" />
+                <span asp-validation-for="Ticket_Price" class="text-danger"></span>
+                <label asp-for="Baggage" class="control-label"></label>
+                <input asp-for="Baggage" class="form-control" />
+                <span asp-validation-for="Baggage" class="text-danger"></span>
+                <label asp-for="Baby" class="control-label"></label>
+                <input asp-for="Baby" class="form-control" />
+                <span asp-validation-for="Baby" class="text-danger"></span>
+                <label asp-for="Music" class="control-label"></label>
+                <input asp-for="Music" class="form-control" />
+                <span asp-validation-for="Music" class="text-danger"></span>
+                <label asp-for="Sport" class="control-label"></label>
+                <input asp-for="Sport" class="form-control" />
+                <span asp-validation-for="Sport" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: flex">
+                <input asp-for="Flight_ID" class="form-control" value="@ViewBag.Flight_ID" type="hidden" />
+                <label asp-for="First_Name" class="control-label" style="margin-top: 5px">First Name</label>
+                <input asp-for="First_Name" class="form-control" style="width: 20%;margin-left: 10px;margin-right: 50px;" required />
+                <span asp-validation-for="First_Name" class="text-danger"></span>
+                <label asp-for="Last_Name" class="control-label" style="margin-top: 5px">Last Name</label>
+                <input asp-for="Last_Name" class="form-control" style="width: 20%; margin-left: 10px;" required />
+                <span asp-validation-for="Last_Name" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Nationality" class="control-label" style="margin-top: 5px;"></label>
+                <input asp-for="Nationality" class="form-control" style="width: 20%;margin-left: 9px;margin-right: 50px;" required />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+                <label asp-for="CNIC" class="control-label" style="margin-top: 5px"></label>
+                <input asp-for="CNIC" class="form-control" style="width: 20%;margin-left: 48.5px" required />
+                <span asp-validation-for="CNIC" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Adult_Seats" class="control-label" style="margin-top: 5px;"></label>
+                <input asp-for="Adult_Seats" type="number" class="form-control" style="width: 20%;margin-left: 9px;margin-right: 50px;" required />
+                <label asp-for="Child_Seats" class="control-label" style="margin-top: 5px"></label>
+                <input asp-for="Child_Seats" type="number" class="form-control" style="width: 20%;margin-left: 48.5px" required />
+            </div>
+            <br>
+            <div class="form-group" style="display: flex;">
+                <label asp-for="IBAN" class="control-label" style="margin-top: 5px;"></label>
+                <input asp-for="IBAN" class="form-control" style="width: 20%;margin-left: 50px;margin-right: 50px" required />
+                <span asp-validation-for="IBAN" class="text-danger"></span>
+                <label asp-for="CVV" class="control-label" style="margin-top: 5px;"></label>
+                <input asp-for="CVV" type="number" class="form-control" style="width: 20%;margin-left: 55px;margin-right: 50px;" placeholder="3 Digit Code" maxlength="3" required />
+                <span asp-validation-for="CVV" class="text-danger"></span>
+                <label asp-for="Date" class="control-label" style="margin-top: 5px;"></label>
+                <input asp-for="Date" type="month" class="form-control" style="width: 15%;margin-left: 10px;margin-right: 50px" required />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Go Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

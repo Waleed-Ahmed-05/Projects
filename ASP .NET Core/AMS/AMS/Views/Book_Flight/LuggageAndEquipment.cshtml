@@ -1,0 +1,181 @@
+﻿@model AMS.Models.Book_Flight
+@{
+    ViewData["Title"] = "LAE";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 300px; /* Fixed width */
+        height: 50px; /* Fixed height */
+    }
+
+        .icon-container i {
+            position: absolute;
+            left: 10px;
+            color: #aaa;
+        }
+
+        .icon-container input {
+            padding-left: 35px;
+            width: 100%; /* Ensure input takes full width of container */
+            height: 100%; /* Ensure input takes full height of container */
+        }
+
+    .checkbox-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center; /* Center items horizontally */
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border:;
+        border-radius:;
+        width: 200px; /* Fixed width */
+        height: 200px; /* Fixed height */
+    }
+
+        .checkbox-container label {
+            margin-left: 10px;
+        }
+
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%; /* Ensure it takes full width of parent */
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Adjust the gap as needed */
+        width: 100%; /* Ensure it takes full width of parent */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .flex-item {
+        display: flex;
+        gap: 20px; /* Adjust the gap as needed */
+        width: 100%; /* Ensure it takes full width of parent */
+        justify-content: center; /* Center items horizontally */
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		height: 100vh;
+		overflow: hidden; /* Prevents scrolling */
+		position: relative;
+	}
+
+	.background-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover; /* Ensures the image covers the entire background */
+		z-index: -1; /* Places the image behind other content */
+	}
+
+	.content {
+		position: relative;
+		color: white;
+		text-align: center;
+		padding: 20px;
+    }
+
+    .shadow-text {
+        color: black;
+        text-shadow: 1px 1px 2px white, /* Bottom-right shadow */
+        -1px -1px 2px white, /* Top-left shadow */
+        -1px 1px 2px white, /* Bottom-left shadow */
+        1px -1px 2px white; /* Top-right shadow */
+    }
+</style>
+<img src="~/css/5.jpg" alt="Background Image" class="background-image">
+<div class="center-content">
+    <h1 class="shadow-text"><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Manage Luggage & Equipment</h1>
+    <hr />
+    <div class="flex-container">
+        <form asp-action="Edit" asp-route-id="@ViewBag.Data_Flight.Booking_ID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="checkbox-grid">
+                <div class="flex-item">
+                    <div class="checkbox-container">
+						<div class="icon-container">
+                            <i class="fa-solid fa-suitcase" style="margin-left: 32px;color: #000000;"></i>
+							<input asp-for="Baggage" type="checkbox" name="Baggage" value="Yes" />
+							<input asp-for="Baggage" type="hidden" name="Baggage" value="No">
+                            <label asp-for="Baggage" class="control-label shadow-text" >Add Baggage <b>5£</b></label>
+                        </div>
+                    </div>
+                    <div class="checkbox-container">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-baby" style="margin-left: 30px;color: #000000;"></i>
+                            <input asp-for="Baby" type="checkbox" name="Baby" value="Yes" />
+							<input asp-for="Baby" type="hidden" name="Baby" value="No">
+                            <label asp-for="Baby" class="control-label shadow-text" >Baby Equipment <b>5£</b></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <div class="checkbox-container">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-music" style="margin-left: 28px;color: #000000;"></i>
+							<input asp-for="Music" type="checkbox" name="Music" value="Yes" />
+							<input asp-for="Music" type="hidden" name="Music" value="No">
+                            <label asp-for="Music" class="control-label shadow-text" >Music Equipment <b>5£</b></label>
+                        </div>
+                    </div>
+                    <div class="checkbox-container">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-baseball" style="margin-left: 28px;color: #000000;"></i>
+							<input asp-for="Sport" type="checkbox" name="Sport" value="Yes" />
+							<input asp-for="Sport" type="hidden" name="Sport" value="No">
+                            <label asp-for="Sport" class="control-label shadow-text" >Sports Equipment <b>5£</b></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" hidden>
+                <input asp-for="Booking_ID" class="form-control" value="@ViewBag.Data_Flight.Booking_ID" />
+                <input asp-for="Flight_ID" class="form-control" value="@ViewBag.Data_Flight.Flight_ID" />
+                <input asp-for="User_ID" class="form-control" value="@ViewBag.Data.User_ID" />
+                <input asp-for="Ticket_Price" class="form-control" value="@ViewBag.Data_Flight.Ticket_Price" />
+                <input asp-for="First_Name" class="form-control" value="@ViewBag.Data_Flight.First_Name" />
+                <input asp-for="Last_Name" class="form-control" value="@ViewBag.Data_Flight.Last_Name" />
+                <input asp-for="Nationality" class="form-control" value="@ViewBag.Data_Flight.Nationality" />
+                <input asp-for="CNIC" class="form-control" value="@ViewBag.Data_Flight.CNIC" />
+                <input asp-for="IBAN" class="form-control" value="@ViewBag.Data_Flight.IBAN" />
+                <input asp-for="CVV" class="form-control" value="@ViewBag.Data_Flight.CVV" />
+                <input asp-for="Date" class="form-control" value="@ViewBag.Data_Flight.Date" />
+                <input asp-for="Pre_Food" class="form-control" value="@ViewBag.Data_Flight.Pre_Food" />
+                <input asp-for="WheelChair" class="form-control" value="@ViewBag.Data_Flight.WheelChair" />
+                <input asp-for="Booking_Class" class="form-control" value="@ViewBag.Data_Flight.Booking_Class" />
+                <input asp-for="Adult_Seats" class="form-control" value="@ViewBag.Data_Flight.Adult_Seats" />
+                <input asp-for="Child_Seats" class="form-control" value="@ViewBag.Data_Flight.Child_Seats" />
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <input type="submit" value="Confirm" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

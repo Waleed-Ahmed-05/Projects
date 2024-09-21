@@ -1,0 +1,101 @@
+﻿@{
+    Layout = "_Layout";
+}
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-danger" id="popup">
+        @TempData["DeleteMessage"]
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+}
+@model AMS.Models.Add_Flight
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevents scrolling */
+        position: relative;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the entire background */
+        z-index: -1; /* Places the image behind other content */
+    }
+
+    .content {
+        position: relative;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+<img src="~/css/4.jpg" alt="Background Image" class="background-image">
+<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh;">
+    <h1 style="margin-bottom: 20px;">Search Your Desired Flights</h1>
+    <div style="border: 2px solid #ccc;border-radius: 20px; padding: 20px; width: 80%; max-width: 800px;">
+        <form asp-action="Search_01">
+            <div class="form-group">
+                <input type="radio" asp-for="Status" value="One Way" id="One Way" />
+                <label for="One Way">One Way</label>
+                <input type="radio" asp-for="Status" value="Two Way" id="Two Way" />
+                <label for="Two Way">Two Way</label>
+                <label><b>(Required)</b></label>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex; justify-content: space-between;">
+                <input name="User_ID" value="@ViewBag.Data.User_ID" hidden />
+                <select name="Departure" class="form-control" style="width: 20%; margin-right: 10px;" required>
+                    <option value="">Departing From</option>
+                    @foreach (var Data in ViewBag.Departure)
+                    {
+                        <option value="@Data">@Data</option>
+                    }
+                </select>
+                <select name="Arrival" class="form-control" style="width: 20%; margin-right: 10px;" required>
+                    <option value="">Arrival At</option>
+                    @foreach (var Data in ViewBag.Arrival)
+                    {
+                        <option value="@Data">@Data</option>
+                    }
+                </select>
+                <select name="Date" class="form-control" style="width: 20%; margin-right: 10px;" required>
+                    <option value="">Departing Dates</option>
+                    @foreach (var Data in ViewBag.Date)
+                    {
+                        <option value="@Data">@Data</option>
+                    }
+                </select>
+                <select name="Class" class="form-control" style="width: 20%; margin-right: 10px;" required>
+                    <option value="">Departing Seats</option>
+                    @foreach (var Data in ViewBag.Class)
+                    {
+                        <option value="@Data">@Data</option>
+                    }
+                </select>
+                <input name="Adult_Seats" class="form-control" style="width: 20%;" placeholder="Passengers" type="number" required/>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex; justify-content: center;">
+                <input type="submit" value="Search" class="btn btn-primary" style="margin-right: 15px;" />
+                <input type="reset" value="Reset" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

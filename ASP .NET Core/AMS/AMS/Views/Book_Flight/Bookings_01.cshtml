@@ -1,0 +1,137 @@
+﻿@model IEnumerable<AMS.Models.Book_Flight>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    @@keyframes rgbAnimation {
+        0% {
+            background-color: red;
+        }
+
+        14% {
+            background-color: orange;
+        }
+
+        28% {
+            background-color: yellow;
+        }
+
+        42% {
+            background-color: green;
+        }
+
+        57% {
+            background-color: blue;
+        }
+
+        71% {
+            background-color: indigo;
+        }
+
+        85% {
+            background-color: violet;
+        }
+
+        100% {
+            background-color: red;
+        }
+    }
+
+    body {
+        animation: rgbAnimation 24s infinite;
+    }
+</style>
+<h1>Select Your Desired Flight</h1>
+<div>
+    @foreach (var item in Model)
+    {
+        if(item.User_ID == ViewBag.Data.User_ID)
+        {
+            foreach (var u in ViewBag.Flight)
+            {
+                if (item.Flight_ID == u.Flight_ID)
+                {
+                    if (item.Baggage == "Yes")
+                    {
+                        item.Ticket_Price += 5;
+                    }
+                    if (item.Baby == "Yes")
+                    {
+                        item.Ticket_Price += 5;
+                    }
+                    if (item.Music == "Yes")
+                     {
+                        item.Ticket_Price += 5;
+                    }
+                    if (item.Sport == "Yes")
+                    {
+                        item.Ticket_Price += 5;
+                    }
+                    if (item.Pre_Food == "Yes")
+                    {
+                        item.Ticket_Price += 7;
+                    }
+                    if (item.Booking_Class == "Business")
+                    {
+                        item.Ticket_Price += 10;
+                    }
+                    if (item.Booking_Class == "First Class")
+                    {
+                        item.Ticket_Price += 15;
+                    }
+                    if (item.Adult_Seats > 0)
+                    {
+                        item.Ticket_Price += 20 * item.Adult_Seats;
+                    }
+                    if (item.Child_Seats > 0)
+                    {
+                        item.Ticket_Price += 5 * item.Child_Seats;
+                    }
+                    <div style="display: flex; border:2px solid #ccc;border-radius: 20px; width: 100%; margin-bottom: 10px;">
+                        <pre>
+                        <h3 style="margin-top: 10px; margin-left: 90px;"><b>Departure</b></h3>
+                        <span style="font-size: 1.5em;margin-left: -95px;"><b>@Html.Raw("From:")</b>@Html.Raw(u.Departing_From)</span>
+
+                        <span style="font-size: 1.5em;margin-left: -95px;"><b>@Html.Raw("Date:")</b>@Html.Raw(u.Departing_Date_01)</span>
+
+                        <span style="font-size: 1.5em;margin-left: -95px;"><b>@Html.Raw("Time:")</b>@Html.Raw(u.Departing_Time_01)</span>
+                        </pre>
+                        <pre style="margin-left: 40px;">
+                        <h3 style="margin-top: 10px; margin-left: 90px;"><b>Arrival</b></h3>
+                        <span style="font-size: 1.5em;margin-left: -95px;"><b>@Html.Raw("From:")</b>@Html.Raw(u.Arrival_At)</span>
+
+                        <span style="font-size: 1.5em;margin-left: -95px;"><b>@Html.Raw("Date:")</b>@Html.Raw(u.Arrival_Date_01)</span>
+
+                        <span style="font-size: 1.5em;margin-left: -95px;"><b>@Html.Raw("Time:")</b>@Html.Raw(u.Arrival_Time_01)</span>
+                        </pre>
+                        <pre style="margin-left: 40px;">
+                        <h3 style="margin-top: 10px; margin-left: 90px;margin-bottom: -10px;"><b>Class</b></h3>
+                        <span style="font-size: 1.5em;margin-left: -95px;">@Html.Raw(u.Class)</span>
+                        <h3 style="margin-top: 10px; margin-left: 90px;margin-bottom: -10px;margin-top: -10px;"><b>Price</b></h3>
+                        <span style="font-size: 1.5em;margin-left: -95px;">@Html.Raw(item.Ticket_Price)£</span>
+                        </pre>
+                        @if (u.Status == "Two Way")
+                        {
+                            <span style="margin-left: 80px;margin-top: 10%;font-size: 1.5em;" title="Two Way Flight"><i class="fa-solid fa-arrows-left-right" style="color: #0c0d0d;"></i></span>
+                        }
+                        @if (u.Status == "One Way")
+                        {
+                            <span style="margin-left: 80px;margin-top: 10%;font-size: 1.5em;" title="One Way Flight"><i class="fa-solid fa-arrow-right" style="color: #111213;"></i></span>
+                        }
+                        <div>
+                            @using (Html.BeginForm("LuggageAndEquipment", "Book_Flight", FormMethod.Post))
+                            {
+                                <input type="hidden" name="ID" value="@item.Booking_ID" />
+                                <input type="hidden" name="User_ID" value="@ViewBag.Data.User_ID" />
+                                <input type="submit" value="Select" style="width: 100px;margin-left: 90px;margin-top: 60%;" class="btn btn-primary" />
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        }
+    }
+</div>

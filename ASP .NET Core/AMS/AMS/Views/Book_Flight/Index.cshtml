@@ -1,0 +1,167 @@
+﻿@model IEnumerable<AMS.Models.Book_Flight>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" id="popup">
+        @TempData["SuccessMessage"]
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+}<style>
+     @@keyframes rgbAnimation {
+         0% {
+             background-color: red;
+         }
+
+         14% {
+             background-color: orange;
+         }
+
+         28% {
+             background-color: yellow;
+         }
+
+         42% {
+             background-color: green;
+         }
+
+         57% {
+             background-color: blue;
+         }
+
+         71% {
+             background-color: indigo;
+         }
+
+         85% {
+             background-color: violet;
+         }
+
+         100% {
+             background-color: red;
+         }
+     }
+
+     body {
+         animation: rgbAnimation 24s infinite;
+     }
+</style>
+<h1>Your current booking details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CNIC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IBAN)
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Class
+            </th>
+            <th>
+                Adults
+            </th>
+            <th>
+                Childs
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    if(item.User_ID == ViewBag.Data.User_ID)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.First_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNIC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IBAN)
+            </td>
+            <td>
+                @if (item.Baggage == "Yes")
+                {
+                    item.Ticket_Price += 5;
+                }
+                @if (item.Baby == "Yes")
+                {
+                    item.Ticket_Price += 5;
+                }
+                @if (item.Music == "Yes")
+                {
+                    item.Ticket_Price += 5;
+                }
+                @if (item.Sport == "Yes")
+                {
+                    item.Ticket_Price += 5;
+                }
+                @if (item.Pre_Food == "Yes")
+                {
+                    item.Ticket_Price += 7;
+                }
+                @if (item.Booking_Class == "Business")
+                {
+                    item.Ticket_Price += 10;
+                }
+                @if (item.Booking_Class == "First Class")
+                {
+                    item.Ticket_Price += 15;
+                }
+                @if (item.Adult_Seats > 0)
+                {
+                    item.Ticket_Price += 20 * item.Adult_Seats;
+                }
+                @if (item.Child_Seats > 0)
+                {
+                    item.Ticket_Price += 5 * item.Child_Seats;
+                }
+                @Html.DisplayFor(modelItem => item.Ticket_Price)<span>@Html.Raw("£")</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Booking_Class)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adult_Seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Child_Seats)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Booking_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+    }
+}
+    </tbody>
+</table>

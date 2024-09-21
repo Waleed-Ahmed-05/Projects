@@ -1,0 +1,122 @@
+﻿@model AMS.Models.Book_Flight
+@{
+    ViewData["Title"] = "MU";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .center-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 20vh;
+        text-align: center;
+    }
+
+    .content-box {
+        border: 2px solid #ccc;
+        border-radius: 20px;
+        padding: 20px;
+        width: 50%; /* Adjust the width as needed */
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevents scrolling */
+        position: relative;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the entire background */
+        z-index: -1; /* Places the image behind other content */
+    }
+
+    .content {
+        position: relative;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+
+<img src="~/css/11.jpg" alt="Background Image" class="background-image">
+<div class="center-container">
+    <h1><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Manage Upgrades</h1>
+    <hr />
+    <div class="content-box">
+        <form asp-action="Edit" asp-route-id="@ViewBag.Data_Flight.Booking_ID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display: flex; justify-content: center;">
+                <label asp-for="Booking_Class" class="control-label" style="margin-top: 5px; margin-right: 20px;">Upgrade your class</label>
+                <select asp-for="Booking_Class" class="form-control" style="width: 25%;height: 20%;" id="bookingClassDropdown">
+                    <option value="">Select Class</option>
+                    <option value="Economy">Economy </option>
+                    <option value="Business">Business </option>
+                    <option value="First Class">First Class </option>
+                </select>
+                <input type="text" id="priceTextbox" class="form-control" style="margin-left: 5px;width: 12%;height: 20%;" placeholder="Price" readonly />
+            </div>
+            <div class="form-group" hidden>
+                <input asp-for="Booking_ID" class="form-control fixed-width" value="@ViewBag.Data_Flight.Booking_ID" />
+                <input asp-for="Flight_ID" class="form-control fixed-width" value="@ViewBag.Data_Flight.Flight_ID" />
+                <input asp-for="User_ID" class="form-control fixed-width" value="@ViewBag.Data.User_ID" />
+                <input asp-for="Ticket_Price" class="form-control fixed-width" value="@ViewBag.Data_Flight.Ticket_Price" />
+                <input asp-for="First_Name" class="form-control fixed-width" value="@ViewBag.Data_Flight.First_Name" />
+                <input asp-for="Last_Name" class="form-control fixed-width" value="@ViewBag.Data_Flight.Last_Name" />
+                <input asp-for="Nationality" class="form-control fixed-width" value="@ViewBag.Data_Flight.Nationality" />
+                <input asp-for="CNIC" class="form-control fixed-width" value="@ViewBag.Data_Flight.CNIC" />
+                <input asp-for="IBAN" class="form-control fixed-width" value="@ViewBag.Data_Flight.IBAN" />
+                <input asp-for="CVV" class="form-control fixed-width" value="@ViewBag.Data_Flight.CVV" />
+                <input asp-for="Date" class="form-control fixed-width" value="@ViewBag.Data_Flight.Date" />
+                <input asp-for="Pre_Food" class="form-control fixed-width" value="@ViewBag.Data_Flight.Pre_Food" />
+                <input asp-for="WheelChair" class="form-control fixed-width" value="@ViewBag.Data_Flight.WheelChair" />
+                <input asp-for="Baggage" class="form-control fixed-width" value="@ViewBag.Data_Flight.Baggage" />
+                <input asp-for="Baby" class="form-control fixed-width" value="@ViewBag.Data_Flight.Baby" />
+                <input asp-for="Music" class="form-control fixed-width" value="@ViewBag.Data_Flight.Music" />
+                <input asp-for="Sport" class="form-control fixed-width" value="@ViewBag.Data_Flight.Sport" />
+                <input asp-for="Adult_Seats" class="form-control" value="@ViewBag.Data_Flight.Adult_Seats" />
+                <input asp-for="Child_Seats" class="form-control" value="@ViewBag.Data_Flight.Child_Seats" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirm" style="margin-top: 10px;" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById('bookingClassDropdown').addEventListener('change', function () {
+            var priceTextbox = document.getElementById('priceTextbox');
+            var selectedClass = this.value;
+            var price = '';
+
+            switch (selectedClass) {
+                case 'Economy':
+                    price = '0£';
+                    break;
+                case 'Business':
+                    price = '10£';
+                    break;
+                case 'First Class':
+                    price = '15£';
+                    break;
+                default:
+                    price = '';
+            }
+
+            priceTextbox.value = price;
+        });
+    </script>
+}

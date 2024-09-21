@@ -1,0 +1,90 @@
+﻿@model IEnumerable<AMS.Models.Add_Car>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" id="popup">
+        @TempData["SuccessMessage"]
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+}
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-danger" id="popup">
+        @TempData["DeleteMessage"]
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+}
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Car Name
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Driver Age
+            </th>
+            <th>
+                Rating
+            </th>
+            <th>
+                Number Plate
+            </th>
+            <th>
+                Contact
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.First_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver_Age)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number_Plate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Car_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.Car_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

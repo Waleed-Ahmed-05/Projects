@@ -1,0 +1,61 @@
+﻿@model AMS.Models.Add_Car
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_Layout";
+}
+
+<h1>Edit Car Details</h1>
+
+<hr />
+<div>
+    <div>
+        <form asp-action="Edit" asp-route-User_ID="@ViewBag.Data.User_ID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Car_ID" />
+            <input type="" asp-for="User_ID" value="@ViewBag.Data.User_ID" hidden/>
+            <div class="form-group" style="display: flex">
+                <label asp-for="First_Name" class="control-label" style="margin-top: 5px;">First Name</label>
+                <input asp-for="User_ID" class="form-control" type="hidden" value="@ViewBag.Data.User_ID" />
+                <input asp-for="First_Name" class="form-control" style="width: 20%;margin-left:10px;margin-right: 50px;" required placeholder="Driver's First Name" />
+                <label asp-for="Last_Name" class="control-label" style="margin-top: 5px;">Last Name</label>
+                <input asp-for="Last_Name" class="form-control" style="width: 20%;margin-left:43.5px" required placeholder="Driver's Last Name" />
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Car_Name" class="control-label" style="margin-top: 5px;">Car Name</label>
+                <input asp-for="Car_Name" class="form-control" style="width: 20%;margin-left: 15.5px;margin-right: 50px" required placeholder="Car Name e.t.c Model" />
+                <label asp-for="Number_Plate" class="control-label" style="margin-top: 5px;">Number Plate</label>
+                <input asp-for="Number_Plate" class="form-control" style="width: 20%;margin-left: 21px" required placeholder="Liscence Plate Number" />
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Driver_Age" class="control-label" style="margin-top: 5px;">Age</label>
+                <input asp-for="Driver_Age" type="text" class="form-control" style="width: 20%;margin-left: 57.5px;margin-right: 50px" maxlength="2" required placeholder="Driver's Age'" />
+                <label asp-for="Rating" class="control-label" style="margin-top: 5px;">Rating</label>
+                <select asp-for="Rating" class="form-control" style="width: 20%;margin-left: 73px" required>
+                    <option value="">Select Driver's Rating</option>
+                    <option value="0">No STARS</option>
+                    <option value="1">1 STAR</option>
+                    <option value="2">2 STARS</option>
+                    <option value="3">3 STARS</option>
+                    <option value="4">4 STARS</option>
+                    <option value="5">5 STARS</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Contact" class="control-label" style="margin-top: 5px;">Contact</label>
+                <input asp-for="Contact" class="form-control" style="width: 20%;margin-left: 31px;margin-right: 50px" required placeholder="+-- ------" />
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

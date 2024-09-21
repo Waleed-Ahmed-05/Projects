@@ -1,0 +1,137 @@
+﻿@model AMS.Models.Book_Flight
+@{
+    Layout = "_Layout";
+}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevents scrolling */
+        position: relative;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the entire background */
+        z-index: -1; /* Places the image behind other content */
+    }
+
+    .content {
+        position: relative;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+<img src="~/css/8.jpg" alt="Background Image" class="background-image">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div>
+    <h1><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Current Flight Details</h1>
+    <hr />
+    <div style="width: 30%;padding: 10px;margin-bottom: 10px;">
+		<label style="font-size: 2em;"><b>Personal Details</b></label>
+        <pre>
+<span style="font-size: 1.5em;"><b>@Html.Raw("First Name: ")</b>@Html.DisplayFor(model => model.First_Name)</span>
+<span style="font-size: 1.5em;"><b>@Html.Raw("Last Name: ")</b>@Html.DisplayFor(model => model.Last_Name)</span>
+<span style="font-size: 1.5em;"><b>@Html.Raw("Nationality: ")</b>@Html.DisplayFor(model => model.Nationality)</span>
+<span style="font-size: 1.5em;"><b>@Html.Raw("CNIC: ")</b>@Html.DisplayFor(model => model.CNIC)</span>
+        </pre>
+    </div>
+    <div style="width: 30%;padding: 10px;">
+        <label style="font-size: 2em;"><b>Credit Card Details</b></label>
+        <pre>
+<span style="font-size: 1.5em;"><b>@Html.Raw("IBAN: ")</b>@Html.DisplayFor(model => model.IBAN)</span>
+<span style="font-size: 1.5em;"><b>@Html.Raw("CVV: ")</b>@Html.DisplayFor(model => model.CVV)</span>
+<span style="font-size: 1.5em;"><b>@Html.Raw("Date: ")</b>@Html.DisplayFor(model => model.Date)</span>
+        </pre>
+    </div>
+    <div style="width: 30%;padding: 10px;margin-left: 30.75%;margin-top: -444px;">
+        <label style="font-size: 2em;"><b>Equipment Status</b></label>
+        <pre>
+<span style="font-size: 1.5em;"><i class="fa-solid fa-suitcase" style="color: #000000;"></i> <b>Baggage: </b>@Html.DisplayFor(model => model.Baggage)</span>
+<span style="font-size: 1.5em;"><i class="fa-solid fa-baby" style="color: #000000;"></i> <b>Baby: </b>@Html.DisplayFor(model => model.Baby)</span>
+<span style="font-size: 1.5em;"><i class="fa-solid fa-music" style="color: #000000;"></i> <b>Music: </b>@Html.DisplayFor(model => model.Music)</span>
+<span style="font-size: 1.5em;"><i class="fa-solid fa-baseball" style="color: #000000;"></i> <b>Sport: </b>@Html.DisplayFor(model => model.Sport)</span>
+        </pre>
+    </div>
+    <div style="width: 30%;padding: 10px;margin-bottom: 72px;margin-left: 61.5%;margin-top: -18%;">
+        <label style="font-size: 2em;"><b>Special Needs</b></label>
+        <pre>
+<span style="font-size: 1.5em;"><i class="fa-solid fa-wheelchair" style="color: #0c0d0d;"></i> <b>WheelChair: </b>@Html.DisplayFor(model => model.WheelChair)</span>
+<span style="font-size: 1.5em;"><i class="fa-solid fa-utensils" style="color: #0f0f0f;"></i> <b>Special Meal: </b>@Html.DisplayFor(model => model.Pre_Food)</span>
+        </pre>
+    </div>
+@foreach (var u in ViewBag.Flight)
+    {
+        float Price = float.Parse(u.Ticket_Price);
+        @if (Model.Baggage == "Yes")
+        {
+            Price += 5;
+        }
+        @if (Model.Baby == "Yes")
+        {
+            Price += 5;
+        }
+        @if (Model.Music == "Yes")
+        {
+            Price += 5;
+        }
+        @if (Model.Sport == "Yes")
+        {
+            Price += 5;
+        }
+        @if (Model.Pre_Food == "Yes")
+        {
+            Price += 7;
+        }
+        @if (Model.Booking_Class == "Business")
+        {
+            Price += 10;
+        }
+        @if (Model.Booking_Class == "First Class")
+        {
+            Price += 15;
+        }
+        @if (Model.Adult_Seats > 0)
+        {
+            Price += 20 * Model.Adult_Seats;
+        }
+        @if (Model.Child_Seats > 0)
+        {
+            Price += 5 * Model.Child_Seats;
+        }
+        if(Model.Flight_ID == u.Flight_ID)
+        {
+            <div style="width: 30%;padding: 10px;margin-top: 10px;margin-left: 30.75%;">
+        <label style="font-size: 2em;"><b>Flight Details</b></label>
+                <pre>
+<span style="font-size: 1.5em;"><b>From: </b>@Html.Raw(u.Departing_From)</span>
+<span style="font-size: 1.5em;"><b>To : </b>@Html.Raw(u.Arrival_At)</span>
+<span style="font-size: 1.5em;"><b>Departure: </b>@Html.Raw(u.Departing_Date_01) @Html.Raw(u.Departing_Time_01)</span>
+<span style="font-size: 1.5em;"><b>Arrival: </b>@Html.Raw(u.Arrival_Date_01) @Html.Raw(u.Arrival_Time_01)</span>
+<span style="font-size: 1.5em;"><b>Class: </b>@Html.DisplayFor(model => model.Booking_Class)</span>
+<span style="font-size: 1.5em;"><b>Price: </b>@Html.Raw(Price)£</span>
+                </pre>
+            </div>
+            if(u.Status == "Two Way")
+            {
+                <div style="width: 30%;padding: 10px;margin-top: -296px;margin-left: 61.55%;">
+                    <label style="font-size: 2em;"><b>Return Details</b></label>
+                    <pre>
+<span style="font-size: 1.5em;"><b>From : </b>@Html.Raw(u.Arrival_At)</span>
+<span style="font-size: 1.5em;"><b>To: </b>@Html.Raw(u.Departing_From)</span>
+<span style="font-size: 1.5em;"><b>Departure: </b>@Html.Raw(u.Departing_Date_02) @Html.Raw(u.Departing_Time_02)</span>
+<span style="font-size: 1.5em;"><b>Arrival: </b>@Html.Raw(u.Arrival_Date_02) @Html.Raw(u.Arrival_Time_02)</span>
+<span style="font-size: 1.5em;"><b>Class: </b>@Html.DisplayFor(model => model.Booking_Class)</span>
+<span style="font-size: 1.5em;"><b>Price: </b>@Html.Raw(Price)£</span>
+                    </pre>
+                </div>
+            }
+        }
+    }
+</div>

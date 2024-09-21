@@ -1,0 +1,70 @@
+﻿@model AMS.Models.Add_Flight
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<h1><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Remove current fight</h1>
+
+<h3>Are you sure you want to remove this flight?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Departing From:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Departing_From)
+        </dd>
+        <dt class = "col-sm-2">
+            Arrival At:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Arrival_At)
+        </dd>
+        <dt class = "col-sm-2">
+            Departure Date & Time:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Departing_Date_01) @Html.DisplayFor(model => model.Departing_Time_01)
+        </dd>
+        <dt class = "col-sm-2">
+            Arrival Date & Time:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Arrival_Date_01) @Html.DisplayFor(model => model.Arrival_Time_01)
+        </dd>
+        <dt class = "col-sm-2">
+            Departure Return Date & Time:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Departing_Date_02) @Html.DisplayFor(model => model.Departing_Time_02)
+        </dd>
+        <dt class = "col-sm-2">
+            Arrival Return Date & Time:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Arrival_Date_02) @Html.DisplayFor(model => model.Arrival_Time_02)
+        </dd>
+        <dt class = "col-sm-2">
+            Ticket Price:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ticket_Price)£
+        </dd>
+        <dt class = "col-sm-2">
+            Class:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Flight_ID" />
+        <input name="User_ID" value="@ViewBag.Data.User_ID" type="hidden"/>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>

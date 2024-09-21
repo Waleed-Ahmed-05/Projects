@@ -1,0 +1,127 @@
+﻿@model AMS.Models.Book_Flight
+@{
+    ViewData["Title"] = "MB";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+        .icon-container i {
+            position: absolute;
+            left: 10px;
+            color: #aaa;
+        }
+
+        .icon-container input {
+            padding-left: 35px;
+        }
+
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevents scrolling */
+        position: relative;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the entire background */
+        z-index: -1; /* Places the image behind other content */
+    }
+
+    .content {
+        position: relative;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+<img src="~/css/8.jpg" alt="Background Image" class="background-image">
+<h1><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Details of current flight</h1>
+<hr />
+<div>
+    <div>
+        <form asp-action="Edit" asp-route-id="@ViewBag.Data_Flight.Booking_ID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label style="margin-bottom: 20px;font-size: 1.5em;"><b>Your Personal Details:</b></label>
+            <div class="form-group" style="display: flex">
+                <label asp-for="First_Name" class="control-label" style="margin-top: 5px">First Name</label>
+                <input asp-for="First_Name" class="form-control" style="width: 20%;margin-left: 10px;margin-right: 50px;" value="@ViewBag.Data_Flight.First_Name" required />
+                <span asp-validation-for="First_Name" class="text-danger"></span>
+                <label asp-for="Last_Name" class="control-label" style="margin-top: 5px">Last Name</label>
+                <input asp-for="Last_Name" class="form-control" style="width: 20%; margin-left: 10px;" value="@ViewBag.Data_Flight.Last_Name" required />
+                <span asp-validation-for="Last_Name" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Nationality" class="control-label" style="margin-top: 5px;"></label>
+                <input asp-for="Nationality" class="form-control" style="width: 20%;margin-left: 9px;margin-right: 50px;" value="@ViewBag.Data_Flight.Nationality" required />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+                <label asp-for="CNIC" class="control-label" style="margin-top: 5px"></label>
+                <input asp-for="CNIC" class="form-control" style="width: 20%;margin-left: 48.5px" value="@ViewBag.Data_Flight.CNIC" required />
+                <span asp-validation-for="CNIC" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Adult_Seats" class="control-label" style="margin-top: 5px;">Adult Seat</label>
+                <input asp-for="Adult_Seats" type="number" value="@ViewBag.Data_Flight.Adult_Seats" class="form-control" style="width: 20%;margin-left: 12px;margin-right: 50px;" required />
+                <label asp-for="Child_Seats" class="control-label" style="margin-top: 5px">Child Seat</label>
+                <input asp-for="Child_Seats" type="number" value="@ViewBag.Data_Flight.Child_Seats" class="form-control" style="width: 20%;margin-left: 14px" required />
+            </div>
+            <br>
+            <label style="margin-bottom: 20px;font-size: 1.5em;"><b>Your Payment Details:</b></label>
+            <div class="form-group" style="display: flex;">
+                <label asp-for="IBAN" class="control-label" style="margin-top: 5px;">IBAN</label>
+                <div class="icon-container" style="width: 20%;margin-left: 50px;margin-right: 50px">
+                    <i class="fa-regular fa-credit-card"></i>
+                    <input asp-for="IBAN" class="form-control" value="@ViewBag.Data_Flight.IBAN" required />
+                </div>
+                <span asp-validation-for="IBAN" class="text-danger"></span>
+                <label asp-for="CVV" class="control-label" style="margin-top: 5px;">CVV</label>
+                <div class="icon-container" style="width: 20%;margin-left: 55px;margin-right: 50px;">
+                    <i class="fa-solid fa-lock"></i>
+                    <input asp-for="CVV" type="number" class="form-control" placeholder="3 Digit Code" maxlength="3" value="@ViewBag.Data_Flight.CVV" required />
+                </div>
+                <span asp-validation-for="CVV" class="text-danger"></span>
+                <label asp-for="Date" class="control-label" style="margin-top: 5px;"></label>
+                <input asp-for="Date" type="month" class="form-control" style="width: 15%;margin-left: 10px;margin-right: 50px" value="@ViewBag.Data_Flight.Date" required />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <input asp-for="Booking_ID" class="form-control" value="@ViewBag.Data_Flight.Booking_ID" />
+                <input asp-for="Flight_ID" class="form-control" value="@ViewBag.Data_Flight.Flight_ID" />
+                <input asp-for="User_ID" class="form-control" value="@ViewBag.Data.User_ID" />
+                <input asp-for="Ticket_Price" class="form-control" value="@ViewBag.Data_Flight.Ticket_Price" />
+                <input asp-for="Pre_Food" class="form-control" value="@ViewBag.Data_Flight.Pre_Food" />
+                <input asp-for="WheelChair" class="form-control" value="@ViewBag.Data_Flight.WheelChair" />
+                <input asp-for="Baggage" class="form-control" value="@ViewBag.Data_Flight.Baggage" />
+                <input asp-for="Baby" class="form-control" value="@ViewBag.Data_Flight.Baby" />
+                <input asp-for="Music" class="form-control" value="@ViewBag.Data_Flight.Music" />
+                <input asp-for="Sport" class="form-control" value="@ViewBag.Data_Flight.Sport" />
+                <input asp-for="Booking_Class" class="form-control" value="@ViewBag.Data_Flight.Booking_Class" />
+                <input asp-for="Adult_Seats" class="form-control" value="@ViewBag.Data_Flight.Adult_Seats" />
+                <input asp-for="Child_Seats" class="form-control" value="@ViewBag.Data_Flight.Child_Seats" />
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <a asp-action="Delete" asp-route-id="@ViewBag.Data_Flight.Booking_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-danger">Cancel Flight</a>
+                <input type="submit" value="Confirm" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

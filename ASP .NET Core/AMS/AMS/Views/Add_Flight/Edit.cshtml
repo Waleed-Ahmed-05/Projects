@@ -1,0 +1,73 @@
+﻿@model AMS.Models.Add_Flight
+
+@{
+    ViewData["Title"] = "Edit_01";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<h1><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Change Current Flight Details</h1>
+
+<hr />
+<div>
+    <div>
+        <form asp-action="Round_About_Data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Flight_ID" />
+            <input asp-for="User_ID" value="@ViewBag.Data.User_ID" type="hidden"/>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Departing_From" class="control-label" style="margin-top: 5px;">Departure</label>
+                <input asp-for="Departing_From" class="form-control" style="width: 20%;margin-left:10px;margin-right: 50px;" placeholder="Departing from" required/>
+                <label asp-for="Arrival_At" class="control-label" style="margin-top: 5px;">Arrival</label>
+                <input asp-for="Arrival_At" class="form-control" style="width: 20%;margin-left:10px" placeholder="Arrival at" required/>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Departing_Time_01" class="control-label" style="margin-top: 5px;">Time</label>
+                <input asp-for="Departing_Time_01" type="time" class="form-control" style="width: 20%;margin-left: 46.5px;margin-right: 50px" required/>
+                <label asp-for="Arrival_Time_01" class="control-label" style="margin-top: 5px;">Time</label>
+                <input asp-for="Arrival_Time_01" type="time" class="form-control" style="width: 20%;margin-left: 21px" required/>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Departing_Date_01" class="control-label" style="margin-top: 5px;">Date</label>
+                <input asp-for="Departing_Date_01" type="date" class="form-control" style="width: 20%;margin-left: 47.5px;margin-right: 50px" required/>
+                <label asp-for="Arrival_Date_01" class="control-label" style="margin-top: 5px;">Date</label>
+                <input asp-for="Arrival_Date_01" type="date" class="form-control" style="width: 20%;margin-left: 22px" required/>
+            </div>
+            <div class="form-group" style="display: flex" hidden>
+                <input asp-for="Departing_Time_02"  class="form-control" />
+                <input asp-for="Arrival_Time_02" class="form-control" />
+                <input asp-for="Departing_Date_02" class="form-control" />
+                <input asp-for="Arrival_Date_02" class="form-control" />
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <label asp-for="Ticket_Price" class="control-label" style="margin-top: 5px;">Price</label>
+                <input asp-for="Ticket_Price" type="number" step="0.01" placeholder="0.00$" class="form-control" style="width: 20%;margin-left:46px;margin-right: 50px;" required/>
+                <label asp-for="Class" class="control-label" style="margin-top: 5px;margin-right: 20px"></label>
+                <select asp-for="Class" class="form-control" style="width: 20%;">
+                    <option value="">Seatings</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group" >
+                <input type="radio" asp-for="Status" value="One Way" id="One Way" />
+                <label for="One Way">One Way</label>
+                <input type="radio" asp-for="Status" value="Two Way" id="Two Way" />
+                <label for="Two Way">Two Way</label>
+            </div>
+            <br>
+            <div class="form-group" style="display: flex">
+                <input type="submit" value="Update" class="btn btn-primary" style="margin-right: 15px;" />
+                <input type="reset" value="Clear" class="btn btn-primary" style="margin-right: 15px;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

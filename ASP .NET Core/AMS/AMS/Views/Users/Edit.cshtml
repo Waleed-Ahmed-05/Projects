@@ -1,0 +1,102 @@
+﻿@model AMS.Models.Users
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .centered-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .heading-padding {
+            padding-bottom: 20px;
+        }
+
+        .icon-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 30%;
+            margin-right: 25px;
+        }
+
+            .icon-container i {
+                position: absolute;
+                left: 10px;
+                color: #aaa;
+            }
+
+            .icon-container input {
+                padding-left: 35px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container centered-content">
+        <h1 class="heading-padding"><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Edit User Credentials</h1>
+        <div class="col-md-8">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="User_ID" />
+                <div class="form-group" style="display: flex;">
+                    <label style="margin-top: 5px;margin-right: 25px;">Your Personal Details</label>
+                    <input asp-for="First_Name" class="form-control" placeholder="First Name" style="width: 30%;margin-left: 48.5px;margin-right: 25px" />
+                    <input asp-for="Last_Name" class="form-control" placeholder="Last Name" style="width: 30%;" />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex;">
+                    <input asp-for="Contact" class="form-control" placeholder="Contact" style="width: 30%; margin-left: 221px;margin-right: 25px;" />
+                    <input asp-for="Date" type="date" class="form-control" style="width: 30%;margin-right: 25px;" />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex;">
+                    <label style="margin-right: 25px;margin-left: 350px;">Gender</label>
+                    <input type="radio" asp-for="Gender" value="Male" id="Male" />
+                    <label for="Male" style="margin-right: 5px;margin-left: 5px;">Male</label>
+                    <input type="radio" asp-for="Gender" value="Female" id="Female" />
+                    <label for="Female" style="margin-left: 5px;">Female</label>
+                </div>
+                <br>
+                <hr />
+                <div class="form-group" style="display: flex;">
+                    <label style="margin-top: 5px;margin-right: 25px;">Let's create your credentials</label>
+                    <div class="icon-container">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                    </div>
+                    <div class="icon-container">
+                        <i class="fa-solid fa-lock"></i>
+                        <input asp-for="Password" class="form-control" placeholder="Password" />
+                    </div>
+                </div>
+                <br>
+                <div class="form-group" hidden>
+                    <input asp-for="Role" class="form-control" />
+                </div>
+                <div class="form-group" style="margin-left: 88.5%;">
+                    <input type="submit" value="Confirm" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

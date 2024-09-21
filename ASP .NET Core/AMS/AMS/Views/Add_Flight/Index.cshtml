@@ -1,0 +1,102 @@
+﻿@model IEnumerable<AMS.Models.Add_Flight>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" id="popup">
+        @TempData["SuccessMessage"]
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+}
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-danger" id="popup">
+        @TempData["DeleteMessage"]
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+}
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Departure
+            </th>
+            <th>
+                Arrival
+            </th>
+            <th>
+                Departure Date
+            </th>
+            <th>
+                Arrival Date
+            </th>
+            <th>
+                Departure Time
+            </th>
+            <th>
+                Arrival Time
+            </th>
+            <th>
+                Ticket Price
+            </th>
+            <th>
+                Class
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departing_From)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arrival_At)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departing_Date_01)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arrival_Date_01)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departing_Time_01)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arrival_Time_01)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Ticket_Price)<span>@Html.Raw("£")</span>
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Flight_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-primary">Details</a>
+                <a asp-action="Edit" asp-route-id="@item.Flight_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-primary">Update</a>
+                <a asp-action="Delete" asp-route-id="@item.Flight_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

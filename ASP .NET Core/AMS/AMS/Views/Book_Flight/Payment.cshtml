@@ -1,0 +1,144 @@
+﻿@model AMS.Models.Book_Flight
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .fixed-width-input {
+        width: 100%;
+        max-width: 300px;
+        margin: 5px 0;
+    }
+
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 40vh;
+    }
+
+    .bordered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 40vh;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+        .icon-container i {
+            position: absolute;
+            left: 10px;
+            color: #aaa;
+        }
+
+        .icon-container input {
+            padding-left: 35px;
+        }
+
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevents scrolling */
+        position: relative;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the entire background */
+        z-index: -1; /* Places the image behind other content */
+    }
+
+    .content {
+        position: relative;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .shadow-text {
+        color: black;
+        text-shadow: 1px 1px 2px white, /* Bottom-right shadow */
+        -1px -1px 2px white, /* Top-left shadow */
+        -1px 1px 2px white, /* Bottom-left shadow */
+        1px -1px 2px white; /* Top-right shadow */
+    }
+</style>
+<img src="~/css/10.jpg" alt="Background Image" class="background-image">
+<div class="centered-container">
+    <div class="bordered-container">
+        <h1 style="margin-bottom: -20px;" class="shadow-text">Pay Here</h1>
+
+        <div style="width: 100%; max-width: 600px;">
+            <form asp-action="Create" style="display: flex; flex-direction: column; align-items: center;">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group" style="display: none;">
+                    <input asp-for="Flight_ID" class="form-control" value="@ViewBag.Flight_ID" />
+                    <input asp-for="First_Name" class="form-control" value="@ViewBag.First_Name" />
+                    <input asp-for="Last_Name" class="form-control" value="@ViewBag.Last_Name" />
+                    <input asp-for="Ticket_Price" class="form-control" value="@ViewBag.Ticket_Price" />
+                    <input asp-for="User_ID" class="form-control" value="@ViewBag.Data.User_ID" />
+                    <input asp-for="Baggage" class="form-control" value="No" />
+                    <input asp-for="Baby" class="form-control" value="No" />
+                    <input asp-for="Music" class="form-control" value="No" />
+                    <input asp-for="Sport" class="form-control" value="No" />
+                    <input asp-for="Pre_Food" class="form-control" value="No" />
+                    <input asp-for="WheelChair" class="form-control" value="No" />
+                    <input asp-for="Booking_Class" class="form-control" value="Economy" />
+                </div>
+                <br>
+                <div class="form-group" style="display: none;">
+                    <input asp-for="Nationality" class="form-control" value="@ViewBag.Nationality" type="hidden" />
+                    <input asp-for="CNIC" class="form-control" value="@ViewBag.CNIC" type="hidden" />
+                    <input asp-for="Adult_Seats" class="form-control" value="@ViewBag.Adult_Seats" type="hidden" />
+                    <input asp-for="Child_Seats" class="form-control" value="@ViewBag.Child_Seats" type="hidden" />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex; flex-direction: column; align-items: center;">
+					<div class="icon-container">
+                        <i class="fa-regular fa-credit-card"></i>
+                        <input asp-for="IBAN" class="form-control fixed-width-input" placeholder="Card Number" required />
+                    </div>
+                    
+                </div>
+                <br>
+                <div class="form-group" style="display: flex; flex-direction: column; align-items: center;">
+                    <div class="icon-container">
+                        <i class="fa-solid fa-lock"></i>
+						<input asp-for="CVV" type="password" class="form-control fixed-width-input" placeholder="3 Digit CVV" minlength="3" maxlength="3" required />
+                    </div>
+                    
+                </div>
+                <br>
+                <div class="form-group" style="display: flex; flex-direction: column; align-items: center;">
+                    <input asp-for="Date" type="month" class="form-control fixed-width-input" required />
+                </div>
+                <br>
+                <div class="form-group" style="display: flex; justify-content: center;">
+                    <input type="submit" value="Use this card" class="btn btn-success" style="margin-right: 5px;" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

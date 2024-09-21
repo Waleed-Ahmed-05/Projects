@@ -1,0 +1,104 @@
+﻿@model IEnumerable<AMS.Models.Book_Car>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" id="popup">
+        @TempData["SuccessMessage"]
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'none';
+        }, 3000);
+    </script>
+}
+<style>
+    @@keyframes rgbAnimation {
+        0% {
+            background-color: red;
+        }
+
+        14% {
+            background-color: orange;
+        }
+
+        28% {
+            background-color: yellow;
+        }
+
+        42% {
+            background-color: green;
+        }
+
+        57% {
+            background-color: blue;
+        }
+
+        71% {
+            background-color: indigo;
+        }
+
+        85% {
+            background-color: violet;
+        }
+
+        100% {
+            background-color: red;
+        }
+    }
+
+    body {
+        animation: rgbAnimation 24s infinite;
+    }
+</style>
+<h1>Viewing current vehicles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Contact
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IBAN)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    if(item.User_ID == ViewBag.Data.User_ID)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.First_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IBAN)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Booking_Car_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-primary">Change Location</a>
+                <a asp-action="Delete" asp-route-id="@item.Booking_Car_ID" asp-route-User_ID="@ViewBag.Data.User_ID" class="btn btn-danger">Cancel Ride</a>
+            </td>
+        </tr>
+    }
+        
+}
+    </tbody>
+</table>

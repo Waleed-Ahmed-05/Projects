@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AMS.Models.Add_Car>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    @@keyframes rgbAnimation {
+        0% {
+            background-color: red;
+        }
+
+        14% {
+            background-color: orange;
+        }
+
+        28% {
+            background-color: yellow;
+        }
+
+        42% {
+            background-color: green;
+        }
+
+        57% {
+            background-color: blue;
+        }
+
+        71% {
+            background-color: indigo;
+        }
+
+        85% {
+            background-color: violet;
+        }
+
+        100% {
+            background-color: red;
+        }
+    }
+
+    body {
+        animation: rgbAnimation 24s infinite;
+    }
+</style>
+<h1>Select Your Desired Car</h1>
+<div>
+    @foreach (var Data in Model)
+    {
+        <div style="display: flex; border: solid; width: 100%; margin-bottom: 10px;border: 2px solid #ccc; border-radius: 10px;">
+            <pre>
+            <h3 style="margin-top: 10px; margin-left: 90px;"><b>Car Details</b></h3>
+			<span style="font-size: 1.5em;margin-left: -95px;"><b>@Html.Raw("Name:")</b>@Html.DisplayFor(model => Data.Car_Name)</span>
+
+            <span style="font-size: 1.5em;margin-left: -4px;"><b>@Html.Raw("Plate:")</b>@Html.DisplayFor(model => Data.Number_Plate)</span>
+            </pre>
+            <pre style="margin-left: 130px;">
+            <h3 style="margin-top: 10px; margin-left: 90px;"><b>Driver Details</b></h3>
+            <span style="font-size: 1.5em;"><b>@Html.Raw("Name:")</b>@Html.DisplayFor(model => Data.First_Name) @Html.DisplayFor(model => Data.Last_Name)</span>
+
+            <span style="font-size: 1.5em;"><b>@Html.Raw("Age:")</b>@Html.DisplayFor(model => Data.Driver_Age)  <b>@Html.Raw("Rating:")</b>@Html.DisplayFor(model => Data.Rating) <i class="fa-regular fa-star"></i></span>
+
+            <span style="font-size: 1.5em;"><b>@Html.Raw("Contact:")</b>@Html.DisplayFor(model => Data.Contact)</span>
+            </pre>
+            <div>
+                @using (Html.BeginForm("Get_Car_ID", "Book_Car", FormMethod.Post))
+                {
+                    <input type="hidden" name="ID" value="@Data.Car_ID" />
+                    <input type="hidden" name="User_ID" value="@ViewBag.Data.User_ID" />
+                    <input type="submit" value="Select" class="btn btn-primary" style="margin-left: 200px;margin-top: 45%;"/>
+                }
+            </div>
+        </div>
+    }
+</div>

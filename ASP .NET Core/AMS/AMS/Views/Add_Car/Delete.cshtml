@@ -1,0 +1,58 @@
+﻿@model AMS.Models.Add_Car
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<h1><a href="javascript:void(0);" onclick="window.history.back();"><i class="fa-solid fa-arrow-left" style="color: #020203;"></i></a> Remove this car</h1>
+
+<h3>Are you sure you want to remove this car?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Car Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Car_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            First Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.First_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Last Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Last_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Age:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Driver_Age)
+        </dd>
+        <dt class = "col-sm-2">
+            Rating: 
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rating) <i class="fa-regular fa-star"></i>
+        </dd>
+        <dt class = "col-sm-2">
+            Number Plate:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Number_Plate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Car_ID" />
+        <input type="hidden" name="User_ID" value="@ViewBag.Data.User_ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>
