@@ -42,7 +42,6 @@ string Decrypt_Cipher_Text(int Key, string Uppercase, string Lowercase, string C
 {
 	string PT;
 	bool Symbol_State;
-	vector<int> Position = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 	for (int i = 0; i < CT.size(); i++)
 	{
 		Symbol_State = false;
@@ -50,13 +49,13 @@ string Decrypt_Cipher_Text(int Key, string Uppercase, string Lowercase, string C
 		{
 			if (CT[i] == Uppercase[j])
 			{
-				PT += Uppercase[Character_Decryption(Position[j], Key)];
+				PT += Uppercase[Character_Decryption(j, Key)];
 				Symbol_State = true;
 				break;
 			}
 			else if (CT[i] == Lowercase[j])
 			{
-				PT += Lowercase[Character_Decryption(Position[j], Key)];
+				PT += Lowercase[Character_Decryption(j, Key)];
 				Symbol_State = true;
 				break;
 			}
