@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+
 using namespace std;
 
 string Layout[12][10] =		{{"    ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", "    "},
@@ -56,8 +58,9 @@ bool Move_Validator(string Move, string Uppercase, string Lowercase, string Numb
 	}
 }
 
-void Move_Piece(string Move, string Uppercase, string Lowercase, string Numbers)
+vector<int> Move_Piece(string Move, string Uppercase, string Lowercase, string Numbers)
 {
+	vector<int> Location;
 	int x, y;
 	for (int i = 0; i < 8; i++)
 	{
@@ -80,28 +83,44 @@ void Move_Piece(string Move, string Uppercase, string Lowercase, string Numbers)
 			break;
 		}
 	}
-	cout << Layout[x + 2][y + 1];
+	Location.push_back(x);
+	Location.push_back(y);
+	return Location;
 }
 
 void Move()
 {
 	string Uppercase = "ABCDEFGH", Lowercase = "abcdefgh", Numbers = "12345678", Move;
-	cout << "\n Enter which chess piece do you wanna move: ";
+	vector<int> From_To;
+	cout << "\n Enter which piece you wanna move: ";
 	cin >> Move;
-	if (Move.size() < 3 && Move.size() > 0)
+	for (int i = 0; i < 2; i++)
 	{
-		if (Move_Validator(Move, Uppercase, Lowercase, Numbers))
+		if (i == 1)
 		{
-			Move_Piece(Move, Uppercase, Lowercase, Numbers);
+			cout << "\n Enter where do you wanna move the piece: ";
+			cin >> Move;
+		}
+		if (Move.size() < 3 && Move.size() > 0)
+		{
+			if (Move_Validator(Move, Uppercase, Lowercase, Numbers))
+			{
+				vector<int> Location = Move_Piece(Move, Uppercase, Lowercase, Numbers);
+				//cout << Layout[Location[0] + 2][Location[1] + 1];
+				From_To.push_back(Location[0] + 2);
+				From_To.push_back(Location[1] + 1);
+			}
+			else
+			{
+				cout << " ! ! ! Invalid Piece Move ! ! !";
+				i--;
+			}
 		}
 		else
 		{
 			cout << " ! ! ! Invalid Piece Move ! ! !";
+			i--;
 		}
-	}
-	else
-	{
-		cout << " ! ! ! Invalid Piece Move ! ! !";
 	}
 }
 
