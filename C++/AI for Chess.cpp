@@ -6,14 +6,14 @@ using namespace std;
 
 string Layout[12][10] =		{{"    ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", "    "},
 							{"    ", "___", "___", "___", "___", "___", "___", "___", "___", "    "},
-							{" A |", " R ", " K ", " B ", " Q ", " K ", " B ", " K ", " R ", "| A "},
+							{" A |", " R ", " k ", " B ", " Q ", " K ", " B ", " k ", " R ", "| A "},
 							{" B |", " P ", " P ", " P ", " P ", " P ", " P ", " P ", " P ", "| B "},
 							{" C |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| C "},
 							{" D |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| D "},
 							{" E |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| E "},
 							{" F |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| F "},
 							{" G |", " P ", " P ", " P ", " P ", " P ", " P ", " P ", " P ", "| G "},
-							{" H |", " R ", " K ", " B ", " Q ", " K ", " B ", " K ", " R ", "| H "},
+							{" H |", " R ", " k ", " B ", " Q ", " K ", " B ", " k ", " R ", "| H "},
 							{"    ", "---", "---", "---", "---", "---", "---", "---", "---", "    "},
 							{"    ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", "    "}};
 
@@ -88,14 +88,17 @@ vector<int> Move_Piece(string Move, string Uppercase, string Lowercase, string N
 	return Location;
 }
 
-void Move()
+vector<int> Move()
 {
 	string Uppercase = "ABCDEFGH", Lowercase = "abcdefgh", Numbers = "12345678", Move;
 	vector<int> From_To;
-	cout << "\n Enter which piece you wanna move: ";
-	cin >> Move;
 	for (int i = 0; i < 2; i++)
 	{
+		if (i == 0)
+		{
+			cout << "\n Enter which piece you wanna move: ";
+			cin >> Move;
+		}
 		if (i == 1)
 		{
 			cout << "\n Enter where do you wanna move the piece: ";
@@ -106,7 +109,6 @@ void Move()
 			if (Move_Validator(Move, Uppercase, Lowercase, Numbers))
 			{
 				vector<int> Location = Move_Piece(Move, Uppercase, Lowercase, Numbers);
-				//cout << Layout[Location[0] + 2][Location[1] + 1];
 				From_To.push_back(Location[0] + 2);
 				From_To.push_back(Location[1] + 1);
 			}
@@ -122,10 +124,31 @@ void Move()
 			i--;
 		}
 	}
+	return From_To;
+}
+
+void Is_Move_Piece_Valid(vector<int> From_To)
+{
+	string Pieces[6] = {" P ", " R " , " k ", " B ", " Q ", " K "};
+	int k = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			if (Layout[From_To[0 + k]][From_To[1 + k]] == Pieces[j])
+			{
+				//cout << Layout[From_To[0 + k]][From_To[1 + k]];
+			}
+		}
+		k = k + 2;
+	}
 }
 
 int main()
 {
 	Load_And_Update_Board();
-	Move();
+	vector<int> From_To = Move();
+	Is_Move_Piece_Valid(From_To);
+	//cout << Layout[From_To[0]][From_To[1]];
+	//cout << Layout[From_To[2]][From_To[3]];
 }
