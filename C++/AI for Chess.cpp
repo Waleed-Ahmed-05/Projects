@@ -16,7 +16,7 @@ string Layout[12][10] =		{{"    ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7
 							{" H |", " R ", " k ", " B ", " Q ", " K ", " B ", " k ", " R ", "| H "},
 							{"    ", "---", "---", "---", "---", "---", "---", "---", "---", "    "},
 							{"    ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", "    "}};
-
+// Used for loading chess board
 void Load_And_Update_Board()
 {
 	for (int i = 0; i < 12; i++)
@@ -28,7 +28,7 @@ void Load_And_Update_Board()
 		cout << endl;
 	}
 }
-
+// Used for validating the input entered from the user such A4, H5 e.t.c
 bool Move_Validator(string Move, string Uppercase, string Lowercase, string Numbers)
 {
 	bool Alphabet_Status = false, Number_Status = false;
@@ -57,8 +57,8 @@ bool Move_Validator(string Move, string Uppercase, string Lowercase, string Numb
 		return false;
 	}
 }
-
-vector<int> Move_Piece(string Move, string Uppercase, string Lowercase, string Numbers)
+// Used for identifying the location of piece that user wants to move from and move it to such as [B,1 - C,1] refers [2,1 - 3,1]
+vector<int> Piece_Location(string Move, string Uppercase, string Lowercase, string Numbers)
 {
 	vector<int> Location;
 	int x, y;
@@ -87,7 +87,7 @@ vector<int> Move_Piece(string Move, string Uppercase, string Lowercase, string N
 	Location.push_back(y);
 	return Location;
 }
-
+// Used for taking inputs, validate them and finding their locations
 vector<int> Move()
 {
 	string Uppercase = "ABCDEFGH", Lowercase = "abcdefgh", Numbers = "12345678", Move;
@@ -108,7 +108,7 @@ vector<int> Move()
 		{
 			if (Move_Validator(Move, Uppercase, Lowercase, Numbers))
 			{
-				vector<int> Location = Move_Piece(Move, Uppercase, Lowercase, Numbers);
+				vector<int> Location = Piece_Location(Move, Uppercase, Lowercase, Numbers);
 				From_To.push_back(Location[0] + 2);
 				From_To.push_back(Location[1] + 1);
 			}
@@ -127,79 +127,75 @@ vector<int> Move()
 	return From_To;
 }
 
-void Pawn(int x, int y)
+void Pawn(int x1, int y1, int x2, int y2)
 {
 
 }
 
-void Rook(int x, int y)
+void Rook(int x1, int y1, int x2, int y2)
 {
 
 }
 
-void Knight(int x, int y)
+void Knight(int x1, int y1, int x2, int y2)
 {
 
 }
 
-void Bishop(int x, int y)
+void Bishop(int x1, int y1, int x2, int y2y)
 {
 
 }
 
-void Queen(int x, int y)
+void Queen(int x1, int y1, int x2, int y2)
 {
 
 }
 
-void King(int x, int y)
+void King(int x1, int y1, int x2, int y2)
 {
 
 }
-
-void Identify_Piece_And_Surroundings(int Piece_Number, int x, int y)
+// Used for identifying chess pieces and calling their corresponding functions
+void Identify_Piece_And_Surroundings(int Piece_Number, int x1, int y1, int x2, int y2)
 {
 	if (Piece_Number == 0)
 	{
-		Pawn(x, y);
+		Pawn(x1, y1, x2, y2);
 	}
 	else if (Piece_Number == 1)
 	{
-		Rook(x, y);
+		Rook(x1, y1, x2, y2);
 	}
 	else if (Piece_Number == 2)
 	{
-		Knight(x, y);
+		Knight(x1, y1, x2, y2);
 	}
 	else if (Piece_Number == 3)
 	{
-		Bishop(x, y);
+		Bishop(x1, y1, x2, y2);
 	}
 	else if (Piece_Number == 4)
 	{
-		Queen(x, y);
+		Queen(x1, y1, x2, y2);
 	}
 	else if (Piece_Number == 5)
 	{
-		King(x, y);
+		King(x1, y1, x2, y2);
 	}
 }
-
-void Is_Move_Piece_Valid(vector<int> From_To)
+// Used for moving chess piece based on it's location and their surroundings
+void Move_Piece(vector<int> From_To)
 {
 	string Pieces[6] = {" P ", " R " , " k ", " B ", " Q ", " K "};
-	int k = 0;
-	for (int i = 0; i < 2; i++)
+	for (int j = 0; j < 6; j++)
 	{
-		for (int j = 0; j < 6; j++)
+		if (Layout[From_To[0]][From_To[1]] == Pieces[j])
 		{
-			if (Layout[From_To[0 + k]][From_To[1 + k]] == Pieces[j])
-			{
-				Identify_Piece_And_Surroundings(j, From_To[0 + k], From_To[1 + k]);
-				//cout << Layout[From_To[0 + k]][From_To[1 + k]];
-			}
+			Identify_Piece_And_Surroundings(j, From_To[0], From_To[1], From_To[2], From_To[3]);
+			break;
+			//cout << Layout[From_To[0 + k]][From_To[1 + k]];
 		}
-		k = k + 2;
 	}
 }
 
@@ -207,7 +203,7 @@ int main()
 {
 	Load_And_Update_Board();
 	vector<int> From_To = Move();
-	Is_Move_Piece_Valid(From_To);
+	Move_Piece(From_To);
 	//cout << Layout[From_To[0]][From_To[1]];
 	//cout << Layout[From_To[2]][From_To[3]];
 }
