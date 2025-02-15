@@ -8,7 +8,7 @@ string Layout[12][10] =		{{"    ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7
 							{"    ", "___", "___", "___", "___", "___", "___", "___", "___", "    "},
 							{" A |", " R ", " k ", " B ", " Q ", " K ", " B ", " k ", " R ", "| A "},
 							{" B |", " P ", " P ", " P ", " P ", " P ", " P ", " P ", " P ", "| B "},
-							{" C |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| C "},
+							{" C |", "   ", "   ", " L ", "   ", "   ", "   ", "   ", "   ", "| C "},
 							{" D |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| D "},
 							{" E |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| E "},
 							{" F |", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "| F "},
@@ -126,10 +126,33 @@ vector<int> Move()
 	}
 	return From_To;
 }
-
+// Used for validating pawn move
 void Pawn(int x1, int y1, int x2, int y2)
 {
-
+	bool Invalid = true;
+	if (((x2 - x1) == 1 || (x2 - x1) == 2) && (y2 - y1 == 0))
+	{
+		if (Layout[x2][y2] == "   ")
+		{
+			Invalid = false;
+		}
+	}
+	else if (((y1 - y2) == 1 || (y2 - y1) == 1) && (x2 - x1) == 1)
+	{
+		if (Layout[x2][y2] != "   ")
+		{
+			Invalid = false;
+		}
+	}
+	if (Invalid)
+	{
+		cout << "! ! ! Invalid Piece Move ! ! !";
+	}
+	else if (!Invalid)
+	{
+		Layout[x1][y1] = "   ";
+		Layout[x2][y2] = " P ";
+	}
 }
 
 void Rook(int x1, int y1, int x2, int y2)
@@ -194,7 +217,6 @@ void Move_Piece(vector<int> From_To)
 		{
 			Identify_Piece_And_Surroundings(j, From_To[0], From_To[1], From_To[2], From_To[3]);
 			break;
-			//cout << Layout[From_To[0 + k]][From_To[1 + k]];
 		}
 	}
 }
@@ -204,6 +226,7 @@ int main()
 	Load_And_Update_Board();
 	vector<int> From_To = Move();
 	Move_Piece(From_To);
+	Load_And_Update_Board();
 	//cout << Layout[From_To[0]][From_To[1]];
 	//cout << Layout[From_To[2]][From_To[3]];
 }
