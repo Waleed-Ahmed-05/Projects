@@ -127,6 +127,64 @@ vector<int> Move()
 	return From_To;
 }
 
+void Pawn(int x, int y)
+{
+
+}
+
+void Rook(int x, int y)
+{
+
+}
+
+void Knight(int x, int y)
+{
+
+}
+
+void Bishop(int x, int y)
+{
+
+}
+
+void Queen(int x, int y)
+{
+
+}
+
+void King(int x, int y)
+{
+
+}
+
+void Identify_Piece_And_Surroundings(int Piece_Number, int x, int y)
+{
+	if (Piece_Number == 0)
+	{
+		Pawn(x, y);
+	}
+	else if (Piece_Number == 1)
+	{
+		Rook(x, y);
+	}
+	else if (Piece_Number == 2)
+	{
+		Knight(x, y);
+	}
+	else if (Piece_Number == 3)
+	{
+		Bishop(x, y);
+	}
+	else if (Piece_Number == 4)
+	{
+		Queen(x, y);
+	}
+	else if (Piece_Number == 5)
+	{
+		King(x, y);
+	}
+}
+
 void Is_Move_Piece_Valid(vector<int> From_To)
 {
 	string Pieces[6] = {" P ", " R " , " k ", " B ", " Q ", " K "};
@@ -137,6 +195,7 @@ void Is_Move_Piece_Valid(vector<int> From_To)
 		{
 			if (Layout[From_To[0 + k]][From_To[1 + k]] == Pieces[j])
 			{
+				Identify_Piece_And_Surroundings(j, From_To[0 + k], From_To[1 + k]);
 				//cout << Layout[From_To[0 + k]][From_To[1 + k]];
 			}
 		}
