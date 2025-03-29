@@ -172,9 +172,9 @@ void Enable_Configuration(int Status)
 
 int main()
 {
-	History(1);
 	while (1)
 	{
+		History(1);
 		string Choice = Main_Menu();
 		if (Choice == "1")
 		{
