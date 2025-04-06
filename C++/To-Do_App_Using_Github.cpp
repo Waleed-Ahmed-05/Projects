@@ -154,7 +154,7 @@ void Enable_Configuration(int Status)
 		Commands.push_back("git config user.name " + User_Details[0]);
 		Commands.push_back("git config user.email " + User_Details[1]);
 		if (User_Details[3] == "None") { Commands.push_back("git remote add origin http://github.com/" + User_Details[0] + "/" + User_Details[2] + ".git"); }
-		else { Commands.push_back("git remote add origin http://" + User_Details[3] + "@github.com / " + User_Details[0] + " / " + User_Details[2] + ".git"); }
+		else { Commands.push_back("git remote add origin http://" + User_Details[3] + "@github.com/" + User_Details[0] + "/" + User_Details[2] + ".git"); }
 	}
 	if (Status == 2) { Commands.push_back("del History.txt"); Commands.push_back("git pull origin main"); }
 	if (Status == 3 || Status == 1)
