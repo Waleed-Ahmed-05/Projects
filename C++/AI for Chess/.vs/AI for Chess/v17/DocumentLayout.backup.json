@@ -1,0 +1,38 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Gangster\u0027s Paradise\\Desktop\\AI for Chess\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{28DF3138-582D-4FB7-B920-A562DD169DFF}|AI for Chess\\AI for Chess.vcxproj|C:\\Users\\Gangster\u0027s Paradise\\Desktop\\AI for Chess\\AI for Chess\\AI for Chess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{28DF3138-582D-4FB7-B920-A562DD169DFF}|AI for Chess\\AI for Chess.vcxproj|solutionrelative:AI for Chess\\AI for Chess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AI for Chess.cpp",
+              "DocumentMoniker": "C:\\Users\\Gangster\u0027s Paradise\\Desktop\\AI for Chess\\AI for Chess\\AI for Chess.cpp",
+              "RelativeDocumentMoniker": "AI for Chess\\AI for Chess.cpp",
+              "ToolTip": "C:\\Users\\Gangster\u0027s Paradise\\Desktop\\AI for Chess\\AI for Chess\\AI for Chess.cpp",
+              "RelativeToolTip": "AI for Chess\\AI for Chess.cpp",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAAAIIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-12T17:20:42.582Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
