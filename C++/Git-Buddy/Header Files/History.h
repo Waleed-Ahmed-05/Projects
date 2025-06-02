@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Libraries.h"
 #include "Add-on.h"
 
 vector<string> Data;
