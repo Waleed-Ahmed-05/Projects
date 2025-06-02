@@ -1,0 +1,38 @@
+#pragma once
+
+#include "Libraries.h"
+#include "Add-on.h"
+
+string Main_Menu()
+{
+	string Choice;
+	cout << "What do you wanna do?" << endl << endl;
+	cout << "1. View To-Do List" << endl;
+	cout << "2. Configure GitHub" << endl;
+	cout << "3. Exit" << endl << endl;
+	cout << "Enter your choice: "; cin >> Choice; Margin();
+	return Choice;
+}
+
+string Sub_Menu_01()
+{
+	string Choice;
+	cout << endl << "What do you wanna do?" << endl << endl;
+	cout << "1. Add a task to list" << endl;
+	cout << "2. Remove a task form list" << endl;
+	cout << "3. Go back" << endl << endl;
+	cout << "Enter your desired choice: "; cin >> Choice; Margin();
+	return Choice;
+}
+
+string Sub_Menu_02()
+{
+	string Choice;
+	cout << endl << "What do you wanna do?" << endl << endl;
+	cout << "1. Configure Github Username, E-mail & Remote Repository" << endl;
+	cout << "2. Enable Configuration for new repository" << endl;
+	cout << "3. Enable Configuration for existing repository" << endl;
+	cout << "4. Go Back" << endl << endl;
+	cout << "Enter your desired choice: "; cin >> Choice; Margin();
+	return Choice;
+}
