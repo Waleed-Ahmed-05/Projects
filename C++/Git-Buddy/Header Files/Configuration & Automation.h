@@ -20,10 +20,8 @@ void User_Email_And_Repo_Configuration()
 
 void Create_Shell_Script(vector<string> Commands)
 {
-	string Temporary_Data;
 	fstream Shell_Script;
 
-	Shell_Script.open("Shell_Script.bat", ios::out); Shell_Script.close();
 	Shell_Script.open("Shell_Script.bat", ios::app);
 	for (int i = 0; i < Commands.size(); i++)
 	{
@@ -45,10 +43,10 @@ void Enable_Configuration(int Status)
 		if (User_Details[3] == "None") { Commands.push_back("git remote add origin http://github.com/" + User_Details[0] + "/" + User_Details[2] + ".git"); }
 		else { Commands.push_back("git remote add origin http://" + User_Details[3] + "@github.com/" + User_Details[0] + "/" + User_Details[2] + ".git"); }
 	}
-	if (Status == 2) { Commands.push_back("del History.txt"); Commands.push_back("git pull origin main"); }
+	if (Status == 2) { Commands.push_back("git pull origin main"); }
 	if (Status == 3 || Status == 1)
 	{
-		Commands.push_back("git add History.txt");
+		Commands.push_back("git add .");
 		Commands.push_back("git commit -m \"Push\"");
 		Commands.push_back("git push -u origin main");
 	}
@@ -59,4 +57,24 @@ void Enable_Configuration(int Status)
 	Create_Shell_Script(Commands);
 	system("Shell_Script.bat");
 	Margin();
+}
+
+int Timer(int TimeInSeconds, int Status)
+{
+	string TimeInSecondsStr;
+	fstream Settings;
+	if (Status == 1)
+	{
+		Settings.open("Settings.txt", ios::out); Settings.close();
+		Settings.open("Settings.txt", ios::app);
+		Settings << TimeInSeconds;
+	}
+	else if (Status == 2)
+	{
+		Settings.open("Settings.txt", ios::in);
+		getline(Settings , TimeInSecondsStr);
+		TimeInSeconds = stoi(TimeInSecondsStr);
+	}
+	Settings.close();
+	return TimeInSeconds;
 }

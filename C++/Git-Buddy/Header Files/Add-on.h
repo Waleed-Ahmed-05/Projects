@@ -8,6 +8,6 @@ void Margin()
 void Invalid()
 {
 	cout << endl << "! ! ! Invalid choice ! ! !" << endl << endl;
-	for (int i = 0; i < 1000000000; i++) {}
+	this_thread::sleep_for(chrono::seconds(2));
 	Margin();
 }
