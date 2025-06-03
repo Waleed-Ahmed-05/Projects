@@ -51,7 +51,7 @@ void Enable_Configuration(int Status)
 		if (User_Details[3] == "None") { Commands.push_back("git remote add origin http://github.com/" + User_Details[0] + "/" + User_Details[2] + ".git"); }
 		else { Commands.push_back("git remote add origin http://" + User_Details[3] + "@github.com/" + User_Details[0] + "/" + User_Details[2] + ".git"); }
 	}
-	if (Status == 2) { Commands.push_back("git pull origin main"); }
+	if (Status == 2) { Commands.push_back("git rm --cached *.exe *.txt *.bat"); Commands.push_back("git pull origin main"); }
 	if (Status == 3 || Status == 1)
 	{
 		Commands.push_back("git add .");

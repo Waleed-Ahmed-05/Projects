@@ -9,7 +9,7 @@ int main()
 		int Delay = Timer(0, 2);
 		string Choice = Main_Menu();
 
-		Create_GitIgnore_File();
+		//Create_GitIgnore_File();
 
 		if (Choice == "1")
 		{
