@@ -30,6 +30,14 @@ void Create_Shell_Script(vector<string> Commands)
 	Shell_Script.close();
 }
 
+void Create_GitIgnore_File()
+{
+	fstream GitIgnore;
+
+	GitIgnore.open(".gitignore", ios::out); GitIgnore.close();
+	GitIgnore.open(".gitignore", ios::app); GitIgnore << "*.bat" << endl << "*.txt" << endl << "*.exe" << endl; GitIgnore.close();
+}
+
 void Enable_Configuration(int Status)
 {
 	vector<string> Commands;
@@ -47,7 +55,7 @@ void Enable_Configuration(int Status)
 	if (Status == 3 || Status == 1)
 	{
 		Commands.push_back("git add .");
-		Commands.push_back("git commit -m \"Push\"");
+		Commands.push_back("git commit -m \"Pushed via Git-Buddy\"");
 		Commands.push_back("git push -u origin main");
 	}
 	Commands.push_back("@echo off");
@@ -63,18 +71,25 @@ int Timer(int TimeInSeconds, int Status)
 {
 	string TimeInSecondsStr;
 	fstream Settings;
+	ifstream File("Settings.txt");
+
 	if (Status == 1)
 	{
 		Settings.open("Settings.txt", ios::out); Settings.close();
-		Settings.open("Settings.txt", ios::app);
-		Settings << TimeInSeconds;
+		Settings.open("Settings.txt", ios::app); Settings << TimeInSeconds;
 	}
 	else if (Status == 2)
 	{
+		if (!File.good())
+		{
+			Settings.open("Settings.txt", ios::out); Settings.close();
+			Settings.open("Settings.txt", ios::app); Settings << 60; Settings.close();
+		}
 		Settings.open("Settings.txt", ios::in);
 		getline(Settings , TimeInSecondsStr);
 		TimeInSeconds = stoi(TimeInSecondsStr);
 	}
 	Settings.close();
+
 	return TimeInSeconds;
 }

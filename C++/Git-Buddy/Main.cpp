@@ -1,6 +1,6 @@
-#include "Libraries.h"
-#include "Menus.h"
-#include "Configuration & Automation.h"
+#include "Header Files/Libraries.h"
+#include "Header Files/Menus.h"
+#include "Header Files/Configuration & Automation.h"
 
 int main()
 {
@@ -8,7 +8,19 @@ int main()
 	{
 		int Delay = Timer(0, 2);
 		string Choice = Main_Menu();
+
+		Create_GitIgnore_File();
+
 		if (Choice == "1")
+		{
+			cout << "Automation of Git Push has been started. You can press any key to stop the automation.";
+			while (!_kbhit())
+			{
+				Enable_Configuration(3);
+				this_thread::sleep_for(chrono::seconds(Delay));
+			}
+		}
+		else if (Choice == "2")
 		{
 			while (1)
 			{
@@ -20,7 +32,7 @@ int main()
 				else { Invalid(); }
 			}
 		}
-		else if (Choice == "2")
+		else if (Choice == "3")
 		{
 			while (1)
 			{
@@ -29,7 +41,7 @@ int main()
 				break;
 			}
 		}
-		else if (Choice == "3") { break; }
+		else if (Choice == "4") { break; }
 		else { Invalid(); }
 	}
 }
