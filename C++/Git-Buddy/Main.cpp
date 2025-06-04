@@ -1,6 +1,7 @@
 #include "Header Files/Libraries.h"
 #include "Header Files/Menus.h"
 #include "Header Files/Configuration & Automation.h"
+#include "Header Files/Networking.h"
 
 int main()
 {
@@ -8,8 +9,6 @@ int main()
 	{
 		int Delay = Timer(0, 2);
 		string Choice = Main_Menu();
-
-		//Create_GitIgnore_File();
 
 		if (Choice == "1")
 		{
