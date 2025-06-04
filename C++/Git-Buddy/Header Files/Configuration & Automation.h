@@ -30,14 +30,6 @@ void Create_Shell_Script(vector<string> Commands)
 	Shell_Script.close();
 }
 
-void Create_GitIgnore_File()
-{
-	fstream GitIgnore;
-
-	GitIgnore.open(".gitignore", ios::out); GitIgnore.close();
-	GitIgnore.open(".gitignore", ios::app); GitIgnore << "*.bat" << endl << "*.txt" << endl << "*.exe" << endl; GitIgnore.close();
-}
-
 void Enable_Configuration(int Status)
 {
 	vector<string> Commands;
@@ -55,6 +47,7 @@ void Enable_Configuration(int Status)
 	if (Status == 3 || Status == 1)
 	{
 		Commands.push_back("git add .");
+		Commands.push_back("git rm --cached *.exe *.txt *.bat");
 		Commands.push_back("git commit -m \"Pushed via Git-Buddy\"");
 		Commands.push_back("git push -u origin main");
 	}
