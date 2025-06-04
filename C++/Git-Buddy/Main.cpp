@@ -12,11 +12,15 @@ int main()
 
 		if (Choice == "1")
 		{
-			cout << "Automation of Git Push has been started. You can press any key to stop the automation.";
+			cout << endl << "Automation of Git Push has been started. You can press any key to stop the automation." << endl;
 			while (!_kbhit())
 			{
-				Enable_Configuration(3);
-				this_thread::sleep_for(chrono::seconds(Delay));
+				if (Confirm_Network_Connection())
+				{
+					Enable_Configuration(3);
+					this_thread::sleep_for(chrono::seconds(Delay));
+				}
+				else { cout << endl << "Can't continue cause network connection is closed." << endl; Margin(); break; }
 			}
 		}
 		else if (Choice == "2")

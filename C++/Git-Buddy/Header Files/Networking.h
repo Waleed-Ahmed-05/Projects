@@ -1,12 +1,14 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <cstdlib>
-#include <chrono>
-#include <thread>
-#include <conio.h>
+bool Confirm_Network_Connection()
+{
+	bool Status = 0;
+	int Ping = system("ping www.google.com -n 1 > nul");
+	
+	if (Ping == 0)
+	{
+		Status = 1;
+	}
 
-using namespace std;
+	return Status;
+}
