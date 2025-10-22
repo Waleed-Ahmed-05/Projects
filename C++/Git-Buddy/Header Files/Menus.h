@@ -8,9 +8,10 @@ void Main_Menu()
 	// system("cls");
 
 	cout << "\nWhat do you wanna do?\n\n"
-		 << "1. Initialize Git-Buddy\n"
-		 << "2. Configure Git-Buddy\n"
-		 << "3. Exit\n\n"
+		 << "1. Start Git-Buddy\n"
+		 << "2. Initialize Git-Buddy\n"
+		 << "3. Configure Git-Buddy\n"
+		 << "4. Exit\n\n"
 		 << "Enter your choice: ";
 
 	cin >> Choice;

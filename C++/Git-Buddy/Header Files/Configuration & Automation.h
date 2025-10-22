@@ -44,41 +44,59 @@ void Github_Configuration()
     }
 }
 
-void Initialize_Git_Buddy(string Choice)
+void Initialize_Git_Buddy(char Status)
 {
-    cout << endl;
-
-    string Shell_Script_Command;
-
-    system("git init");
-
-    Shell_Script_Command = "git config --local user.name " + Username;
-
-    system(Shell_Script_Command.c_str());
-
-    Shell_Script_Command = "git config --local user.email " + Email;
-
-    system(Shell_Script_Command.c_str());
-
-    system("git branch -M main");
-
-    if(Token == "none")
+    if(Status != '3')
     {
-        Shell_Script_Command = "git remote add origin https://github.com/" + Username + "/" + Repository + ".git";
-    }
-    else
-    {
-        Shell_Script_Command = "git remote add origin https://" + Token + "@github.com/" + Username + "/" + Repository + ".git";
+        cout << endl;
+
+        string Shell_Script_Command;
+
+        system("git init");
+
+        Shell_Script_Command = "git config --local user.name " + Username;
+
+        system(Shell_Script_Command.c_str());
+
+        Shell_Script_Command = "git config --local user.email " + Email;
+
+        system(Shell_Script_Command.c_str());
+
+        system("git branch -M main");
+
+        if(Token == "none")
+        {
+            Shell_Script_Command = "git remote add origin https://github.com/" + Username + "/" + Repository + ".git";
+        }
+        else
+        {
+            Shell_Script_Command = "git remote add origin https://" + Token + "@github.com/" + Username + "/" + Repository + ".git";
+        }
+
+        system(Shell_Script_Command.c_str());
     }
 
-    system(Shell_Script_Command.c_str());
-
-    if(Choice == "1")
+    if(Status == '1' || Status == '3')
     {
         system("git add . && git commit -m \"Commited via Git-Buddy\" && git push -u origin main");
     }
-    else if(Choice == "2")
+    else if(Status == '2')
     {
         system("git pull origin main");
     }
+}
+
+int Settings_Configuration()
+{
+    int Minutes;
+
+    cout << "\nEnter how many minutes do wanna delay your push/push requests: ";
+    cin >> Minutes;
+
+    return Minutes * 60;
+}
+
+void Sleep(int Time)
+{
+    this_thread::sleep_for(chrono::seconds(Time));
 }
